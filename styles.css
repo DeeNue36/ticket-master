@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --text-color: hsl(0, 0%, 100%);
+    --placeholder-color: hsl(252, 6%, 83%);
+    --form-background-color: hsl(245, 15%, 58%);
+    --background-color-light: hsl(245, 19%, 35%);
+    --background-color-dark: hsl(248, 70%, 10%);
+    --button-background-color: hsl(7, 88%, 67%);
+    --button-background-color-hover: hsl(7, 71%, 60%);
+    --button-text-color: hsl(0, 0%, 0%);
+    -ticket-name-gradient-color: hsl(7, 86%, 67%) to hsl(0, 0%, 100%);
+    --form-label-size: 20px;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+}
+
+html, body {
+    font-family: 'Inconsolata', monospace;
+}
