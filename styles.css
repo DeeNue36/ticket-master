@@ -32,7 +32,6 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
 }
 
@@ -50,7 +49,7 @@ body {
 }
 
 .container {
-    max-width: 640px;
+    max-width: 720px;
 }
 
 
@@ -69,6 +68,9 @@ body {
 
 .intro-text {
     color: var(--text-color);
+    font-size: 2.56em;
+    font-weight: var(--font-weight-extrabold);
+    margin: 48px 0 24px;
 }
 
 .intro-subtext {
