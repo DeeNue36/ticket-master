@@ -106,25 +106,40 @@ input#avatar {
 }
 
 .upload {
-    border: 1px dashed var(--placeholder-color);
-    background-color: hsl(245, 15%, 58%, 0.32);
+    /* border: 1px dashed hsl(245, 15%, 58%, 0.5); */
+    /* background-color: hsl(245, 15%, 58%, 0.32); */
+    border: 1px dashed var(--form-background-color);
+    background-color: hsl(245, 19%, 35%, 0.5);
     -webkit-backdrop-filter: blur(2px);
     -moz-backdrop-filter: blur(2px);
     -o-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
-    border-radius: 8px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     text-align: center;
     padding: 32px;
+    height: 164px;
     cursor: pointer;
     color: var(--placeholder-color);
+}
+
+.upload-icon {
+    border: 1px solid hsl(245, 15%, 58%, 0.5);
+    background-color: hsl(245, 15%, 58%, 0.32);
+    border-radius: 15px;
+    padding: 16px;
 }
 
 .upload-subtext {
     color: var(--placeholder-color);
     font-size: 12px;
+}
+
+.info-circle {
+    vertical-align: middle;
 }
 
 .circle-i {
@@ -135,6 +150,5 @@ input#avatar {
     text-align: center;
     font-size: 8px;
     border: 1px solid var(--placeholder-color);
-    /* line-height: 20px; */
     vertical-align: middle;
 }
