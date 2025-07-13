@@ -104,14 +104,13 @@ label {
 
 input#avatar {
     display: none;
-    /* cursor: pointer;
-    position: absolute;
-    opacity: 0;
-    z-index: -1;
-    margin: 0 auto; */
 }
 
-.upload {
+.file-upload-label {
+    pointer-events: none;
+}
+
+.file-upload {
     border: 1px dashed var(--form-background-color);
     background-color: hsl(245, 19%, 35%, 0.24);
     -webkit-backdrop-filter: blur(2px);
@@ -145,19 +144,3 @@ input#avatar {
 .info-circle {
     vertical-align: middle;
 }
-
-/* input[type="file"]::-webkit-file-upload-button {
-    display: none;
-}
-
-input[type="file"]::-ms-browse {
-    display: none;
-}
-
-input[type="file"]::-moz-file-picker {
-    display: none;
-}
-
-input[type="file"]::file-selector-button {
-    display: none;
-} */
