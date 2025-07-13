@@ -17,7 +17,6 @@
 
         <header class="company-intro">
             <img src="images/logo-full.svg" class="company-logo" alt="Coding Conf logo">
-
             <h1 class="intro-text">
                 Your Journey to Coding Conf 2025 Starts Here!
             </h1>
@@ -30,17 +29,16 @@
         <div class="ticket-form-container">
             <form class="ticket-form">
                 <!--* Upload Avatar -->
-                <label for="avatar">Upload Avatar</label>
-                <input type="file" id="avatar" name="avatar" accept="image/jpg, image/png" required>
-                <!-- OR accept=".jpg, .png" -->
                 <div class="upload-container">
-                    <div class="upload">
+                    <label  for="avatar" class="file-upload-label">Upload Avatar</label>
+                    <div class="file-upload">
+                        <input type="file" id="avatar" name="avatar" accept="image/jpg, image/png" required>
+                        <!-- OR accept=".jpg, .png" -->
                         <img src="images/icon-upload.svg" class="upload-icon" alt="upload-icon">
                         <p class="upload-text">Drag and drop or click to upload</p>
                     </div>
 
                     <p class="upload-subtext">
-                        <!-- <span class="circle-i">i</span> -->
                         <img src="images/icon-info.svg" class="info-circle" alt="info-circle icon">
                         Upload your photo (JPG or PNG, max size: 500KB)
                     </p>
