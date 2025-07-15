@@ -53,7 +53,7 @@ body {
 }
 
 
-/** Header  */
+/** Header  Styling*/
 .company-intro {
     text-align: center;
     display: flex;
@@ -80,7 +80,7 @@ body {
 }
 
 
-/** Form  */
+/** Form  Styling*/
 label {
     color: var(--text-color);
     width: 100%;
@@ -91,7 +91,7 @@ label {
 ::placeholder {
     color: var(--placeholder-color);
     opacity:  0.72;
-    font-family: 'Inconsolata', monospace;
+    font-family: inherit;
     font-size: 16px;
 }
 
@@ -105,7 +105,7 @@ label {
     flex-direction: column;
 }
 
-/** File Upload Field */
+/** File Upload Field  Styling */
 input#avatar {
     display: none;
 }
@@ -155,7 +155,7 @@ input#avatar {
     vertical-align: middle;
 }
 
-/** Input Fields — Full Name, Email, Github Username */
+/** Input Fields Styling — Full Name, Email, Github Username */
 #fullname, #email, #github-uname {
     border: 1px solid var(--form-background-color);
     background-color: hsl(245, 19%, 35%, 0.24);
@@ -168,6 +168,39 @@ input#avatar {
     margin-bottom: 16px;
     outline: none;
     color: var(--text-color);
-    font-family: 'Inconsolata', monospace;
+    font-family: inherit;
     font-size: 16px;
 }
+
+/** Button styling */
+.generate-ticket {
+    border: none;
+    outline : none;
+    width: 100%;
+    font-family: inherit;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    font-size: var(--form-label-size);
+    font-weight: var(--font-weight-extrabold);
+    text-align: center;
+    letter-spacing: 1px;
+    padding: 16px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in;
+}
+
+.generate-ticket:hover {
+    background-color: var(--button-background-color-hover);
+}
+
+
+/** Ticket Name Styling */
+/* .ticket-name {
+    background: -webkit-linear-gradient(var(--ticket-name-gradient-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 40px;
+    font-weight: var(--font-weight-extrabold);
+    margin: 32px 0;
+} */
