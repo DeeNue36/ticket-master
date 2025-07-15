@@ -174,7 +174,7 @@ input#avatar {
 
 /** Button styling */
 .generate-ticket {
-    border: none;
+    border: 4px;
     outline : none;
     width: 100%;
     font-family: inherit;
@@ -192,15 +192,5 @@ input#avatar {
 
 .generate-ticket:hover {
     background-color: var(--button-background-color-hover);
+    border-bottom: 2px solid var(--button-background-color);
 }
-
-
-/** Ticket Name Styling */
-/* .ticket-name {
-    background: -webkit-linear-gradient(var(--ticket-name-gradient-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 40px;
-    font-weight: var(--font-weight-extrabold);
-    margin: 32px 0;
-} */
