@@ -70,7 +70,7 @@ body {
     color: var(--text-color);
     font-size: 3.6em;
     word-spacing: 12px;
-    margin: 48px 0 24px;
+    margin: 32px 0 24px;
 }
 
 .intro-subtext {
@@ -149,9 +149,14 @@ input#avatar {
 .upload-subtext {
     color: var(--placeholder-color);
     font-size: 12px;
+    margin: 16px 0 24px;
 }
 
 .info-circle {
+    vertical-align: middle;
+}
+
+.photo-upload-type-info {
     vertical-align: middle;
 }
 
@@ -172,8 +177,18 @@ input#avatar {
     font-size: 16px;
 }
 
+.file-upload:hover, #fullname:hover, #email:hover, #github-uname:hover {
+    background-color:  hsl(245, 19%, 35%, 0.5);
+    -webkit-backdrop-filter: blur(2px);
+    -moz-backdrop-filter: blur(2px);
+    -o-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    cursor: pointer;
+}
+
 /** Button styling */
 .generate-ticket {
+    margin-top: 12px;
     border: none;
     border-bottom: 3.2px inset var(--button-background-color);
     outline : none;
@@ -185,7 +200,7 @@ input#avatar {
     font-weight: var(--font-weight-extrabold);
     text-align: center;
     letter-spacing: 1px;
-    padding: 16px 0;
+    padding: 14px 0;
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease-in;
