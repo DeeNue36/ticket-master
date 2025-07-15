@@ -174,7 +174,8 @@ input#avatar {
 
 /** Button styling */
 .generate-ticket {
-    border: 4px;
+    border: none;
+    border-bottom: 3.2px inset var(--button-background-color);
     outline : none;
     width: 100%;
     font-family: inherit;
@@ -192,5 +193,5 @@ input#avatar {
 
 .generate-ticket:hover {
     background-color: var(--button-background-color-hover);
-    border-bottom: 2px solid var(--button-background-color);
+    border-bottom:  3.2px inset var(--button-background-color);
 }
