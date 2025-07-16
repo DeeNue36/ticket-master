@@ -15,7 +15,7 @@
     --button-background-color: hsl(7, 88%, 67%);
     --button-background-color-hover: hsl(7, 71%, 60%);
     --button-text-color: hsl(0, 0%, 0%);
-    --ticket-name-gradient-color: hsl(7, 86%, 67%) to hsl(0, 0%, 100%);
+    --ticket-name-gradient-color: hsl(7, 86%, 67%), hsl(0, 0%, 100%);
     --form-label-size: 20px;
     --font-weight-normal: 400;
     --font-weight-medium: 500;
@@ -66,7 +66,7 @@ body {
     margin-top: 32px;
 }
 
-.intro-text {
+.intro-text, .congrats-text {
     color: var(--text-color);
     font-size: 3.6em;
     word-spacing: 12px;
@@ -104,6 +104,21 @@ label {
     display: flex;
     flex-direction: column;
 }
+
+.file-upload:hover, #fullname:hover, #email:hover, #github-uname:hover {  /** Input fields hover state  */
+    background-color:  hsl(245, 19%, 35%, 0.5);
+    -webkit-backdrop-filter: blur(2px);
+    -moz-backdrop-filter: blur(2px);
+    -o-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    cursor: pointer;
+}
+
+.file-upload:focus, #fullname:focus, #email:focus, #github-uname:focus, .generate-ticket:focus {  /** Input fields focus state */
+    outline: 1px solid var(--placeholder-color);
+    outline-offset: 4px;
+}
+
 
 /** File Upload Field  Styling */
 input#avatar {
@@ -160,6 +175,7 @@ input#avatar {
     vertical-align: middle;
 }
 
+
 /** Input Fields Styling — Full Name, Email, Github Username */
 #fullname, #email, #github-uname {
     border: 1px solid var(--form-background-color);
@@ -177,19 +193,6 @@ input#avatar {
     font-size: 16px;
 }
 
-.file-upload:hover, #fullname:hover, #email:hover, #github-uname:hover {
-    background-color:  hsl(245, 19%, 35%, 0.5);
-    -webkit-backdrop-filter: blur(2px);
-    -moz-backdrop-filter: blur(2px);
-    -o-backdrop-filter: blur(2px);
-    backdrop-filter: blur(2px);
-    cursor: pointer;
-}
-
-.file-upload:focus, #fullname:focus, #email:focus, #github-uname:focus, .generate-ticket:focus {
-    outline: 1px solid var(--form-background-color);
-    outline-offset: 4px;
-}
 
 /** Button styling */
 .generate-ticket {
@@ -214,4 +217,29 @@ input#avatar {
 .generate-ticket:hover {
     background-color: var(--button-background-color-hover);
     border-bottom:  3.2px inset var(--button-background-color);
+}
+
+
+/** Ticket Styling */
+
+/** Ticket Header Styling */
+.user-ticket-ready {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 32px 0 0;
+}
+
+.ticket-owner-name {
+    background-image: linear-gradient(to right, var(--ticket-name-gradient-color));
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -o-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    -o-text-fill-color: transparent;
 }
