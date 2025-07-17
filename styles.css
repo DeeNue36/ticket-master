@@ -229,7 +229,7 @@ input#avatar {
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 32px 0 0;
+    margin: 32px 0 64px;
 }
 
 .ticket-owner-name {
@@ -242,4 +242,40 @@ input#avatar {
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
     -o-text-fill-color: transparent;
+}
+
+.confirmation-text {
+    color: var(--placeholder-color);
+    font-size: 16px;
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+    line-height: 20px;
+}
+
+.ticket-owner-email {
+    color: var(--button-background-color);
+    letter-spacing: 1px;
+}
+
+/** Ticket Styling */
+.ticket {
+    width: 600px;
+    height: 280px;
+    background: transparent;
+    /* background-image: url('images/pattern-ticket.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; */
+    border: 1px solid transparent;
+    border-image: linear-gradient(to left, var(--ticket-name-gradient-color)) 1;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
 }
