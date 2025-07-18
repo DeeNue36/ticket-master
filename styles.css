@@ -53,6 +53,12 @@ body {
 }
 
 
+/** Ticket Application Container Styling */
+.ticket-application {
+    display: none;
+}
+
+
 /** Header  Styling*/
 .company-intro {
     text-align: center;
@@ -264,4 +270,7 @@ input#avatar {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    width: 600px;
+    height: 280px;
+    margin: 0 auto;
 }
