@@ -315,3 +315,19 @@ input#avatar {
     width: 114px;
     height: inherit;
 }
+
+.ticket-id {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: inherit;
+}
+
+.ticket-id-number {
+    color: var(--placeholder-color);
+    opacity: 0.5;
+    font-size: 24px;
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 1px;
+    transform: rotate(90deg);
+}
