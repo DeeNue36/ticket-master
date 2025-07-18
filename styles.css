@@ -277,4 +277,41 @@ input#avatar {
     -moz-backdrop-filter: blur(8px);
     -o-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
+    display: flex;
+}
+
+.main-area {
+    width: 486px;
+    padding: 32px 16px;
+    height: inherit;
+}
+
+.ticket-logo-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.ticket-logo {
+    margin-right: 16px;
+}
+
+.ticket-company-name {
+    color: var(--text-color);
+    font-weight: var(--font-weight-medium);
+    font-size: 36px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.event-details {
+    color: var(--placeholder-color);
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-left: 56px;
+}
+
+.minor-area {
+    width: 114px;
+    height: inherit;
 }
