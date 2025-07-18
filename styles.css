@@ -273,4 +273,8 @@ input#avatar {
     width: 600px;
     height: 280px;
     margin: 0 auto;
+    -webkit-backdrop-filter: blur(8px);
+    -moz-backdrop-filter: blur(8px);
+    -o-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
 }
