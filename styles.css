@@ -53,13 +53,13 @@ body {
 }
 
 
-/** Ticket Application Container Styling */
-.ticket-application {
+/** Ticket Application Form Container Styling */
+/* .ticket-application {
     display: none;
-}
+} */
 
 
-/** Header  Styling*/
+/** Ticket Application Form Header  Styling*/
 .company-intro {
     text-align: center;
     display: flex;
@@ -86,7 +86,7 @@ body {
 }
 
 
-/**General Form  Styling*/
+/** General Form  Styling*/
 label {
     color: var(--text-color);
     width: 100%;
@@ -378,4 +378,13 @@ input#avatar {
     font-weight: var(--font-weight-medium);
     letter-spacing: 1px;
     transform: rotate(90deg);
+}
+
+/** Display Utilities */
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
 }
