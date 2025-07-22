@@ -157,27 +157,42 @@ input#avatar {
 
 .upload {
     border: 1px solid hsl(245, 15%, 58%, 0.5);
-    background-color: hsl(245, 19%, 35%, 0.5);
     border-radius: 15px;
-    padding: 16px;
+    /* padding: 16px; */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 64px;
+    height: 64px;
     max-width: 100%;
     max-height: 100%;
+    background: url('images/icon-upload.svg') no-repeat center center / 32px 32px;
+}
+
+.upload::before {
+    content: '';
+    background-color: hsl(245, 19%, 35%, 0.5);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
 .upload-icon {
-    width: 24px;
-    height: 24px;
-    max-width: 100%;
-    max-height: 100%;
+    width: 32px;
+    height: 32px;
+    align-self: center;
 }
 
-.upload-icon img {
-    width: 50%;
-    height: 50%;
+.uploaded-image{
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     object-position: center;
     border-radius: 15px;
-    padding: 16px;
+    z-index: 1;
 }
 
 .upload-text {
