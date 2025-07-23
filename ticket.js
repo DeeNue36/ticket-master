@@ -15,23 +15,43 @@ const githubInput = document.querySelector('#github-uname');
 // * Submit Button
 const generateTicket = document.getElementById('generate-ticket');
 
+// * Upload Image Text and Image Control Buttons
+const uploadText = document.querySelector('.upload-text');
+const uploadControl = document.querySelector('.upload-controls');
+const removeImage = document.querySelector('.remove-button');
+const changeImage = document.querySelector('.change-button');
 
+
+//* Trigger the file selector when the element is clicked
 selectImage.addEventListener('click', function(){
     avatarInput.click();
 });
 
+
+//* Listens for a file to be selected, creates an image element and displays the image 
 avatarInput.addEventListener('change', function() {
     const userSelectedImage = this.files[0];
     const reader = new FileReader();
 
     reader.onload = () => {
         const imgUrl = reader.result;
+        selectImage.innerHTML = '';
         const img = document.createElement('img');
         img.src = imgUrl;
-        // selectImage.innerHTML = '';
         selectImage.appendChild(img);
         img.classList.add('uploaded-image');
+        uploadText.style.display = 'none';
+        uploadControl.style.display = 'flex';
     };
 
     reader.readAsDataURL(userSelectedImage);
+
+    //* Remove the uploaded image 
+    removeImage.addEventListener('click', function() {
+        selectImage.innerHTML = '';
+        uploadText.style.display = 'block';
+        uploadControl.style.display = 'none';
+        avatarInput.value = '';
+    });
 });
+
