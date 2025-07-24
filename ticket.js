@@ -45,26 +45,21 @@ avatarInput.addEventListener('change', function() {
     };
 
     reader.readAsDataURL(userSelectedImage);
+});
 
-    //* Remove the uploaded image 
-    removeImage.addEventListener('click', function() {
-        selectImage.innerHTML = '';
-        uploadText.style.display = 'block';
-        uploadControl.style.display = 'none';
-        avatarInput.value = '';
-    });
 
-    //* Change the uploaded image
-    let fileSelectorOpen = false; //? Flag to track if the file selector is open
+//* Remove the uploaded image 
+removeImage.addEventListener('click', function() {
+    selectImage.innerHTML = '';
+    uploadText.style.display = 'block';
+    uploadControl.style.display = 'none';
+    avatarInput.value = '';
+});
 
-    changeImage.addEventListener('click', function() {
-        avatarInput.value = '';
-        
-        //? If the file selector is not open
-        if (!fileSelectorOpen) {
-            avatarInput.click();
-            fileSelectorOpen = true;
-        }
-    });
+//* Change the uploaded image
+changeImage.addEventListener('click', function() {
+    avatarInput.value = '';
+    console.log('Change image button clicked');
+    avatarInput.click();
 });
 
