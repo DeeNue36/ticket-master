@@ -188,7 +188,8 @@ input#avatar {
     z-index: 1;
 }
 
-.upload-text {
+/** Upload Instructions Main Text */
+.upload-instructions {
     margin-top: 20px;
     letter-spacing: 1px;
 }
@@ -216,7 +217,8 @@ input#avatar {
     text-decoration: underline;
 }
 
-.upload-subtext {
+/** Upload Instructions Sub Text */
+.upload-instructions-subtext {
     color: var(--placeholder-color);
     font-size: 12px;
     margin: 16px 0 24px;
