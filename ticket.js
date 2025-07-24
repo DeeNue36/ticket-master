@@ -16,7 +16,7 @@ const githubInput = document.querySelector('#github-uname');
 const generateTicket = document.getElementById('generate-ticket');
 
 // * Upload Image Text and Image Control Buttons
-const uploadText = document.querySelector('.upload-text');
+const uploadInstructions = document.querySelector('.upload-text');
 const uploadControl = document.querySelector('.upload-controls');
 const removeImage = document.querySelector('.remove-button');
 const changeImage = document.querySelector('.change-button');
@@ -40,7 +40,7 @@ avatarInput.addEventListener('change', function() {
         img.src = imgUrl;
         selectImage.appendChild(img);
         img.classList.add('uploaded-image');
-        uploadText.style.display = 'none';
+        uploadInstructions.style.display = 'none';
         uploadControl.style.display = 'flex';
     };
 
@@ -51,15 +51,15 @@ avatarInput.addEventListener('change', function() {
 //* Remove the uploaded image 
 removeImage.addEventListener('click', function() {
     selectImage.innerHTML = '';
-    uploadText.style.display = 'block';
-    uploadControl.style.display = 'none';
     avatarInput.value = '';
+    uploadInstructions.style.display = 'block'; //? Display the upload instructions
+    uploadControl.style.display = 'none'; //? Hide the upload control buttons
 });
 
 //* Change the uploaded image
 changeImage.addEventListener('click', function() {
     avatarInput.value = '';
     console.log('Change image button clicked');
-    avatarInput.click();
+    avatarInput.click(); //? OR selectImage.click();
 });
 
