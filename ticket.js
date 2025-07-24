@@ -53,5 +53,18 @@ avatarInput.addEventListener('change', function() {
         uploadControl.style.display = 'none';
         avatarInput.value = '';
     });
+
+    //* Change the uploaded image
+    let fileSelectorOpen = false; //? Flag to track if the file selector is open
+
+    changeImage.addEventListener('click', function() {
+        avatarInput.value = '';
+        
+        //? If the file selector is not open
+        if (!fileSelectorOpen) {
+            avatarInput.click();
+            fileSelectorOpen = true;
+        }
+    });
 });
 
