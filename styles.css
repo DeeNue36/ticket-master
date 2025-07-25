@@ -431,6 +431,23 @@ input#avatar {
     transform: rotate(90deg);
 }
 
+
+/** Error Styling */
+.error-border {
+    border: 1px solid var(--button-background-color-hover);
+}
+
+.error-message {
+    color: var(--button-background-color-hover);
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.error-info-circle {
+    margin-right: 8px;
+    color: var(--button-background-color-hover);
+}
+
 /** Display Utilities */
 .hide {
     display: none;
