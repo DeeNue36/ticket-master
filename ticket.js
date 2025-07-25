@@ -12,8 +12,11 @@ const nameInput = document.querySelector('#fullname');
 const emailInput = document.querySelector('#email');
 const githubInput = document.querySelector('#github-uname');
 
-// * Error Message
-const errorMessage = document.querySelectorAll('.error-message');
+// * Error Messages
+const avatarErrorMessage = document.querySelector('.avatar-error-message');
+const nameErrorMessage = document.querySelector('.name-error-message');
+const emailErrorMessage = document.querySelector('.email-error-message');
+const githubErrorMessage = document.querySelector('.github-error-message');
 
 // * Submit Button
 const generateTicket = document.getElementById('generate-ticket');
@@ -88,44 +91,20 @@ selectImage.addEventListener('drop', function(e) {
 
 
 //* Generate Ticket Button
-generateTicket.addEventListener('click', function() {
-
+generateTicket.addEventListener('click', (e) => {
+    e.preventDefault();
     const fullName = nameInput.value;
     const email = emailInput.value;
     const githubUsername = githubInput.value;
     const avatar = avatarInput.files[0];
 
-    if (fullName === '' || email === '' || githubUsername === '' || avatar === '') {
-        errorMessage.forEach(error => {
-            // const infoImg = document.createElement('img');
-            // infoImg.src = 'images/icon-info.svg';
-            // infoImg.classList.add('error-info-circle');
-            // error.appendChild(infoImg);
-
-            // const svgNamespace = 'http://www.w3.org/2000/svg';
-            // const infoCircle = document.createElementNS(svgNamespace, 'svg');
-            // infoCircle.setAttribute('width', '16');
-            // infoCircle.setAttribute('height', '16');
-            // infoCircle.setAttribute('fill', 'none');
-            // infoCircle.setAttribute('viewBox', '0 0 16 16');
-            // const path = document.createElementNS(svgNamespace, 'path');
-            // path.setAttribute('stroke', '#D1D0D5');
-            // path.setAttribute('stroke-linecap', 'round');
-            // path.setAttribute('stroke-linejoin', 'round');
-            // path.setAttribute('d', 'M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z');
-            // path.setAttribute('fill', '#D1D0D5');
-            // path.setAttribute('d', 'M8.004 10.462V7.596ZM8 5.57v-.042Z');
-            // path.setAttribute('stroke', '#D1D0D5');
-            // path.setAttribute('stroke-linecap', 'round');
-            // path.setAttribute('stroke-linejoin', 'round');
-            // path.setAttribute('d', 'M8.004 10.462V7.596ZM8 5.57v-.042Z');
-            // infoCircle.appendChild(path);
-            // const circle = document.createElementNS(svgNamespace, 'circle');
-            // circle.setAttribute('fill', '#D1D0D5');
-            // circle.setAttribute('cx', '8');
-            // circle.setAttribute('cy', '5.57');
-            // circle.setAttribute('r', '.042');
-
+    if (fullName === '') {
+        // const infoImg = document.createElement('img');
+        // infoImg.src = 'images/icon-info.svg';
+        // infoImg.classList.add('error-info-circle');
+        // error.appendChild(infoImg);
+        if (!nameErrorMessage.querySelector('.error-info-circle')) {
+            //? Create and append the info-circle SVG element 
             const svgNamespace = 'http://www.w3.org/2000/svg';
             const infoCircle = document.createElementNS(svgNamespace, 'svg');
             infoCircle.setAttribute('width', '16');
@@ -153,15 +132,107 @@ generateTicket.addEventListener('click', function() {
             infoCircle.appendChild(path2);
             infoCircle.appendChild(path3);
 
-            error.appendChild(infoCircle);
+            infoCircle.classList.add('error-info-circle');
 
+            nameErrorMessage.appendChild(infoCircle);
+
+            //? Create and append the error message
             const message = document.createElement('span');
-            message.textContent = 'This field is required';
-            error.appendChild(message);
-            if (fullName) {
+            message.classList.add('message');
+            nameErrorMessage.appendChild(message);
+            message.innerText = 'Please enter your full name';
 
-            }
-        });
+            //? Add error border color
+            nameInput.style.border = '1px solid var(--button-background-color-hover)';
+        }
+    }
+    if (email === '') {
+        if (!emailErrorMessage.querySelector('.error-info-circle')) {
+            //? Create and append the info-circle SVG element 
+            const svgNamespace = 'http://www.w3.org/2000/svg';
+            const infoCircle = document.createElementNS(svgNamespace, 'svg');
+            infoCircle.setAttribute('width', '16');
+            infoCircle.setAttribute('height', '16');
+            infoCircle.setAttribute('fill', 'none');
+            infoCircle.setAttribute('viewBox', '0 0 16 16');
+
+            const path1 = document.createElementNS(svgNamespace, 'path');
+            path1.setAttribute('stroke', '#e16151');
+            path1.setAttribute('stroke-linecap', 'round');
+            path1.setAttribute('stroke-linejoin', 'round');
+            path1.setAttribute('d', 'M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z');
+
+            const path2 = document.createElementNS(svgNamespace, 'path');
+            path2.setAttribute('fill', '#e16151');
+            path2.setAttribute('d', 'M8.004 10.462V7.596ZM8 5.57v-.042Z');
+
+            const path3 = document.createElementNS(svgNamespace, 'path');
+            path3.setAttribute('stroke', '#e16151');
+            path3.setAttribute('stroke-linecap', 'round');
+            path3.setAttribute('stroke-linejoin', 'round');
+            path3.setAttribute('d', 'M8.004 10.462V7.596M8 5.569v-.042');
+
+            infoCircle.appendChild(path1);
+            infoCircle.appendChild(path2);
+            infoCircle.appendChild(path3);
+
+            infoCircle.classList.add('error-info-circle');
+
+            emailErrorMessage.appendChild(infoCircle);
+
+            //? Create and append the error message
+            const message = document.createElement('span');
+            message.classList.add('message');
+            emailErrorMessage.appendChild(message);
+            message.innerText = 'Please enter a valid email address';
+
+            //? Add error border color
+            emailInput.style.border = '1px solid var(--button-background-color-hover)';
+        }
+    }
+    if (githubUsername === '') {
+        if (!githubErrorMessage.querySelector('.error-info-circle')) {
+            //? Create and append the info-circle SVG element 
+            const svgNamespace = 'http://www.w3.org/2000/svg';
+            const infoCircle = document.createElementNS(svgNamespace, 'svg');
+            infoCircle.setAttribute('width', '16');
+            infoCircle.setAttribute('height', '16');
+            infoCircle.setAttribute('fill', 'none');
+            infoCircle.setAttribute('viewBox', '0 0 16 16');
+
+            const path1 = document.createElementNS(svgNamespace, 'path');
+            path1.setAttribute('stroke', '#e16151');
+            path1.setAttribute('stroke-linecap', 'round');
+            path1.setAttribute('stroke-linejoin', 'round');
+            path1.setAttribute('d', 'M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z');
+
+            const path2 = document.createElementNS(svgNamespace, 'path');
+            path2.setAttribute('fill', '#e16151');
+            path2.setAttribute('d', 'M8.004 10.462V7.596ZM8 5.57v-.042Z');
+
+            const path3 = document.createElementNS(svgNamespace, 'path');
+            path3.setAttribute('stroke', '#e16151');
+            path3.setAttribute('stroke-linecap', 'round');
+            path3.setAttribute('stroke-linejoin', 'round');
+            path3.setAttribute('d', 'M8.004 10.462V7.596M8 5.569v-.042');
+
+            infoCircle.appendChild(path1);
+            infoCircle.appendChild(path2);
+            infoCircle.appendChild(path3);
+
+            infoCircle.classList.add('error-info-circle');
+
+            githubErrorMessage.appendChild(infoCircle);
+    
+            //? Create and append the error message
+            const message = document.createElement('span');
+            message.classList.add('message');
+            githubErrorMessage.appendChild(message);
+            message.innerText = 'Please enter your GitHub username';
+
+            //? Add error border color
+            githubInput.style.border = '1px solid var(--button-background-color-hover)';
+        }
     }
 
     // const formData = new FormData();
@@ -173,10 +244,3 @@ generateTicket.addEventListener('click', function() {
     // ticketApplicationContainer.classList.add('hide');
     // displayTicket.classList.remove('hide');
 });
-
-
-{/* <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
-    <path stroke="#D1D0D5" stroke-linecap="round" stroke-linejoin="round" d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z"/>
-    <path fill="#D1D0D5" d="M8.004 10.462V7.596ZM8 5.57v-.042Z"/>
-    <path stroke="#D1D0D5" stroke-linecap="round" stroke-linejoin="round" d="M8.004 10.462V7.596M8 5.569v-.042"/>
-</svg> */}
