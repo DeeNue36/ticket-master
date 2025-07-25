@@ -433,10 +433,6 @@ input#avatar {
 
 
 /** Error Styling */
-.error-border {
-    border: 1px solid var(--button-background-color-hover);
-}
-
 .avatar-error-message, .name-error-message, .email-error-message, .github-error-message {
     color: var(--button-background-color-hover);
     font-size: 12px;
@@ -451,6 +447,7 @@ input#avatar {
 .message {
     vertical-align: middle;
 }
+
 
 /** Display Utilities */
 .hide {
