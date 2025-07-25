@@ -16,7 +16,7 @@ const githubInput = document.querySelector('#github-uname');
 const generateTicket = document.getElementById('generate-ticket');
 
 // * Upload Image Text and Image Control Buttons
-const uploadInstructions = document.querySelector('.upload-text');
+const uploadInstructions = document.querySelector('.upload-instructions');
 const uploadControl = document.querySelector('.upload-controls');
 const removeImage = document.querySelector('.remove-button');
 const changeImage = document.querySelector('.change-button');
@@ -61,5 +61,25 @@ changeImage.addEventListener('click', function() {
     avatarInput.value = '';
     console.log('Change image button clicked');
     avatarInput.click(); //? OR selectImage.click();
+});
+
+//* Drag and Drop Image Upload
+selectImage.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    selectImage.style.border = '1px dashed #8784a4';
+});
+
+selectImage.addEventListener('dragleave', function() {
+    selectImage.style.border = '1px solid #8784a480';
+});
+
+selectImage.addEventListener('drop', function(e) {
+    e.preventDefault();
+    // The DataTransfer object's files property returns a DataTransferItemList object,
+    // which is a list of the files being dragged. We assign this to the files variable.
+    const files = e.dataTransfer.files;
+    avatarInput.files = files;
+    avatarInput.dispatchEvent(new Event('change'));
+    selectImage.style.border = '1px solid #8784a480';
 });
 
