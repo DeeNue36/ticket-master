@@ -91,7 +91,7 @@ label {
     color: var(--text-color);
     width: 100%;
     font-size: var(--form-label-size);
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 ::placeholder {
@@ -243,7 +243,7 @@ input#avatar {
     backdrop-filter: blur(2px);
     border-radius: 10px;
     padding: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     outline: none;
     color: var(--text-color);
     font-family: inherit;
@@ -437,15 +437,19 @@ input#avatar {
     border: 1px solid var(--button-background-color-hover);
 }
 
-.error-message {
+.avatar-error-message, .name-error-message, .email-error-message, .github-error-message {
     color: var(--button-background-color-hover);
     font-size: 12px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .error-info-circle {
     margin-right: 8px;
-    color: var(--button-background-color-hover);
+    vertical-align: middle;
+}
+
+.message {
+    vertical-align: middle;
 }
 
 /** Display Utilities */
