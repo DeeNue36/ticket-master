@@ -31,13 +31,13 @@ const removeImage = document.querySelector('.remove-button');
 const changeImage = document.querySelector('.change-button');
 
 
-//* Trigger the file selector when the element is clicked
+//! Trigger the file selector when the element is clicked
 selectImage.addEventListener('click', function(){
     avatarInput.click();
 });
 
 
-//* Listens for a file to be selected, creates an image element and displays the image 
+//! Listens for a file to be selected, creates an image element and displays the image 
 avatarInput.addEventListener('change', function() {
     const userSelectedImage = this.files[0];
     const reader = new FileReader();
@@ -47,7 +47,7 @@ avatarInput.addEventListener('change', function() {
 
     avatarErrorMessage.innerHTML = ''; // Clear any previous error messages
     
-    // Check if the image is .JPG or .PNG
+    //* Check if the image is .JPG or .PNG
     const fileExtension = userSelectedImage.name.split('.').pop().toLowerCase();
     if (fileExtension !== 'jpg' && fileExtension !== 'png') {
 
@@ -71,7 +71,7 @@ avatarInput.addEventListener('change', function() {
         }
     }
 
-
+    //* Check if the image is under 500KB
     if (fileSizeInMB > 0.5) {
         uploadInstructionsSubtext.style.display = 'none';
 
@@ -83,7 +83,6 @@ avatarInput.addEventListener('change', function() {
         const errorMessage = createErrorMessage('File too large. Please upload a photo under 500KB.');
         avatarErrorMessage.appendChild(errorMessage);
         return;
-
     }
     else {
         avatarErrorMessage.innerHTML = '';
@@ -105,7 +104,7 @@ avatarInput.addEventListener('change', function() {
 });
 
 
-//* Remove the uploaded image 
+//! Remove the uploaded image 
 removeImage.addEventListener('click', function() {
     selectImage.innerHTML = '';
     avatarInput.value = '';
@@ -116,7 +115,7 @@ removeImage.addEventListener('click', function() {
 });
 
 
-//* Change the uploaded image
+//! Change the uploaded image
 changeImage.addEventListener('click', function() {
     avatarInput.value = '';
     console.log('Change image button clicked');
@@ -124,7 +123,7 @@ changeImage.addEventListener('click', function() {
 });
 
 
-//* Drag and Drop Image Upload
+//! Drag and Drop Image Upload
 selectImage.addEventListener('dragover', function(e) {
     e.preventDefault();
     selectImage.style.border = '1px dashed #8784a4';
@@ -145,86 +144,20 @@ selectImage.addEventListener('drop', function(e) {
 });
 
 
-//* Generate Ticket Button
+//! Generate Ticket Button
 generateTicket.addEventListener('click', function(e) {
     e.preventDefault();
-    const fullName = nameInput.value;
+    // const fullName = nameInput.value;
 
-    const email = emailInput.value;
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    // const email = emailInput.value;
+    // const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     const githubUsername = githubInput.value;
 
     validateAvatar();
-
-    //! Validate full name input
-    if (fullName === '') {
-
-        //? Check if the error message already exists before creating a new one
-        if (!nameErrorMessage.querySelector('.error-info-circle')) { 
-
-            //? Create and append the info-circle SVG element 
-            const infoCircle = createInfoCircle();
-            nameErrorMessage.appendChild(infoCircle);
-    
-            //? Create and append the error message
-            const errorMessage = createErrorMessage('Please enter your full name');
-            nameErrorMessage.appendChild(errorMessage);
-
-            //? Add error border color
-            nameInput.style.border = '1px solid var(--button-background-color-hover)';
-        }
-    }
-    else {
-        nameErrorMessage.innerHTML = '';
-        nameInput.style.border = '1px solid var(--form-background-color)';
-    }
-
-    //! Validate email input
-    if (email === '' || !emailRegex.test(email)) {
-
-        //? Check if the error message already exists before creating a new one
-        if (!emailErrorMessage.querySelector('.error-info-circle')) {
-
-            //? Create and append the info-circle SVG element 
-            const infoCircle = createInfoCircle();
-            emailErrorMessage.appendChild(infoCircle);
-    
-            //? Create and append the error message
-            const errorMessage = createErrorMessage('Please enter a valid email address');
-            emailErrorMessage.appendChild(errorMessage);
-
-            //? Add error border color
-            emailInput.style.border = '1px solid var(--button-background-color-hover)';
-        }
-    }
-    else {
-        emailErrorMessage.innerHTML = '';
-        emailInput.style.border = '1px solid var(--form-background-color)';
-    }
-
-    //! Validate github username
-    if (githubUsername === '') {
-
-        //? Check if the error message already exists before creating a new one
-        if (!githubErrorMessage.querySelector('.error-info-circle')) {
-
-            //? Create and append the info-circle SVG element 
-            const infoCircle = createInfoCircle();
-            githubErrorMessage.appendChild(infoCircle);
-    
-            //? Create and append the error message
-            const errorMessage = createErrorMessage('Please enter your GitHub username');
-            githubErrorMessage.appendChild(errorMessage);
-
-            //? Add error border color
-            githubInput.style.border = '1px solid var(--button-background-color-hover)';
-        }
-    }
-    else {
-        githubErrorMessage.innerHTML = '';
-        githubInput.style.border = '1px solid var(--form-background-color)';
-    }
+    validateFullName();
+    validateEmail();
+    validateGithubUsername();
 
     // const formData = new FormData();
     // formData.append('avatar', avatar);
@@ -237,6 +170,9 @@ generateTicket.addEventListener('click', function(e) {
 });
 
 
+//* —————————————————————————————— FUNCTIONS ———————————————————————————————— //
+
+//! Create the info-circle SVG element
 function createInfoCircle(){
     const svgNamespace = 'http://www.w3.org/2000/svg';
     const infoCircle = document.createElementNS(svgNamespace, 'svg');
@@ -271,6 +207,7 @@ function createInfoCircle(){
 }
 
 
+//! Create the error message element
 function createErrorMessage(error) {
     const message = document.createElement('span');
     message.classList.add('message');
@@ -279,6 +216,8 @@ function createErrorMessage(error) {
     return message; // Returns the result of the function: the error message when it is called anywhere in the code
 }
 
+
+// ! Validate an image upload by size and file type
 function validateAvatar() {
     const avatar = avatarInput.files[0];
     const avatarFileSize = avatar?.size; // Optional chaining operator to safely access the size property
@@ -288,7 +227,7 @@ function validateAvatar() {
     avatarErrorMessage.innerHTML = '';
     uploadInstructionsSubtext.style.display = 'none';
 
-    //! Validate if an image/avatar has been uploaded
+    //* Validate if an image/avatar has been uploaded
     if (!avatar || avatarFileSizeInMB > 0.5) {
 
         //? Check if the error message already exists before creating a new one
@@ -329,5 +268,92 @@ function validateAvatar() {
         const errorMessage = createErrorMessage('File too large. Please upload a photo under 500KB.');
         avatarErrorMessage.appendChild(errorMessage);
     }
+}
 
+
+//! Validate full name
+function validateFullName() {
+    const fullName = nameInput.value;
+
+    //* Validate full name input
+    if (fullName === '') {
+
+        //? Check if the error message already exists before creating a new one
+        if (!nameErrorMessage.querySelector('.error-info-circle')) { 
+
+            //? Create and append the info-circle SVG element 
+            const infoCircle = createInfoCircle();
+            nameErrorMessage.appendChild(infoCircle);
+    
+            //? Create and append the error message
+            const errorMessage = createErrorMessage('Please enter your full name');
+            nameErrorMessage.appendChild(errorMessage);
+
+            //? Add error border color
+            nameInput.style.border = '1px solid var(--button-background-color-hover)';
+        }
+    }
+    else {
+        nameErrorMessage.innerHTML = '';
+        nameInput.style.border = '1px solid var(--form-background-color)';
+    }
+}
+
+
+//! Validate email
+function validateEmail() {
+    const email = emailInput.value;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    //* Validate email input
+    if (email === '' || !emailRegex.test(email)) {
+
+        //? Check if the error message already exists before creating a new one
+        if (!emailErrorMessage.querySelector('.error-info-circle')) {
+
+            //? Create and append the info-circle SVG element 
+            const infoCircle = createInfoCircle();
+            emailErrorMessage.appendChild(infoCircle);
+    
+            //? Create and append the error message
+            const errorMessage = createErrorMessage('Please enter a valid email address');
+            emailErrorMessage.appendChild(errorMessage);
+
+            //? Add error border color
+            emailInput.style.border = '1px solid var(--button-background-color-hover)';
+        }
+    }
+    else {
+        emailErrorMessage.innerHTML = '';
+        emailInput.style.border = '1px solid var(--form-background-color)';
+    }
+}
+
+
+//! Validate github username
+function validateGithubUsername() {
+    const githubUsername = githubInput.value;
+
+    //* Validate github username input
+    if (githubUsername === '') {
+
+        //? Check if the error message already exists before creating a new one
+        if (!githubErrorMessage.querySelector('.error-info-circle')) {
+
+            //? Create and append the info-circle SVG element 
+            const infoCircle = createInfoCircle();
+            githubErrorMessage.appendChild(infoCircle);
+    
+            //? Create and append the error message
+            const errorMessage = createErrorMessage('Please enter your GitHub username');
+            githubErrorMessage.appendChild(errorMessage);
+
+            //? Add error border color
+            githubInput.style.border = '1px solid var(--button-background-color-hover)';
+        }
+    }
+    else {
+        githubErrorMessage.innerHTML = '';
+        githubInput.style.border = '1px solid var(--form-background-color)';
+    }
 }
