@@ -45,6 +45,33 @@ avatarInput.addEventListener('change', function() {
     const fileSize = userSelectedImage.size;
     const fileSizeInMB = fileSize / (1024 * 1024);
 
+    avatarErrorMessage.innerHTML = ''; // Clear any previous error messages
+    
+    // Check if the image is .JPG or .PNG
+    const fileExtension = userSelectedImage.name.split('.').pop().toLowerCase();
+    if (fileExtension !== 'jpg' && fileExtension !== 'png') {
+
+        uploadInstructionsSubtext.style.display = 'none';
+
+        //? Create and append the info-circle SVG element 
+        const infoCircle = createInfoCircle();
+        avatarErrorMessage.appendChild(infoCircle);
+
+        if (fileSizeInMB > 0.5) {
+            // ? Create and append the error message
+            const errorMessage = createErrorMessage('Please upload a .JPG or .PNG file under 500KB.');
+            avatarErrorMessage.appendChild(errorMessage);
+            return;
+        } 
+        else {
+            // ? Create and append the error message
+            const errorMessage = createErrorMessage('Please upload a .JPG or .PNG file.');
+            avatarErrorMessage.appendChild(errorMessage);
+            return;
+        }
+    }
+
+
     if (fileSizeInMB > 0.5) {
         uploadInstructionsSubtext.style.display = 'none';
 
@@ -56,9 +83,11 @@ avatarInput.addEventListener('change', function() {
         const errorMessage = createErrorMessage('File too large. Please upload a photo under 500KB.');
         avatarErrorMessage.appendChild(errorMessage);
         return;
+
     }
     else {
         avatarErrorMessage.innerHTML = '';
+        uploadInstructionsSubtext.style.display = 'block';
     }
 
     reader.onload = () => {
@@ -80,9 +109,12 @@ avatarInput.addEventListener('change', function() {
 removeImage.addEventListener('click', function() {
     selectImage.innerHTML = '';
     avatarInput.value = '';
+    avatarErrorMessage.innerHTML = '';
     uploadInstructions.style.display = 'block'; //? Display the upload instructions
     uploadControl.style.display = 'none'; //? Hide the upload control buttons
+    uploadInstructionsSubtext.style.display = 'block'; //? Display the upload instructions subtext
 });
+
 
 //* Change the uploaded image
 changeImage.addEventListener('click', function() {
@@ -90,6 +122,7 @@ changeImage.addEventListener('click', function() {
     console.log('Change image button clicked');
     avatarInput.click(); //? OR selectImage.click();
 });
+
 
 //* Drag and Drop Image Upload
 selectImage.addEventListener('dragover', function(e) {
@@ -116,29 +149,13 @@ selectImage.addEventListener('drop', function(e) {
 generateTicket.addEventListener('click', function(e) {
     e.preventDefault();
     const fullName = nameInput.value;
+
     const email = emailInput.value;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
     const githubUsername = githubInput.value;
-    const avatar = avatarInput.files[0];
 
-    if (!avatar) {
-
-        //? Check if the error message already exists before creating a new one
-        if (!avatarErrorMessage.querySelector('.error-info-circle')) { 
-            uploadInstructionsSubtext.style.display = 'none';
-
-            //? Create and append the info-circle SVG element 
-            const infoCircle = createInfoCircle();
-            avatarErrorMessage.appendChild(infoCircle);
-    
-            //? Create and append the error message
-            const errorMessage = createErrorMessage('File too large. Please upload a photo under 500KB.');
-            avatarErrorMessage.appendChild(errorMessage);
-        }
-        else {
-            avatarErrorMessage.innerHTML = '';
-        }
-    }
+    validateAvatar();
 
     //! Validate full name input
     if (fullName === '') {
@@ -260,4 +277,57 @@ function createErrorMessage(error) {
     message.innerText= error;
 
     return message; // Returns the result of the function: the error message when it is called anywhere in the code
+}
+
+function validateAvatar() {
+    const avatar = avatarInput.files[0];
+    const avatarFileSize = avatar?.size; // Optional chaining operator to safely access the size property
+    const avatarFileSizeInMB = avatarFileSize / (1024 * 1024);
+    const fileExtension = avatar?.name.split('.').pop().toLowerCase();
+
+    avatarErrorMessage.innerHTML = '';
+    uploadInstructionsSubtext.style.display = 'none';
+
+    //! Validate if an image/avatar has been uploaded
+    if (!avatar || avatarFileSizeInMB > 0.5) {
+
+        //? Check if the error message already exists before creating a new one
+        if (!avatarErrorMessage.querySelector('.error-info-circle')) { 
+            // uploadInstructionsSubtext.style.display = 'none';
+
+            //? Create and append the info-circle SVG element 
+            const infoCircle = createInfoCircle();
+            avatarErrorMessage.appendChild(infoCircle);
+    
+            //? Create and append the error message
+            const errorMessage = createErrorMessage('Please upload a photo.');
+            avatarErrorMessage.appendChild(errorMessage);
+        }
+    }
+    else if (fileExtension !== 'jpg' && fileExtension !== 'png') {
+        //? Create and append the info-circle SVG element 
+        const infoCircle = createInfoCircle();
+        avatarErrorMessage.appendChild(infoCircle);
+
+        if (fileSizeInMB > 0.5) {
+            //? Create and append the error message
+            const errorMessage = createErrorMessage('Please upload a .JPG or .PNG file under 500KB.');
+            avatarErrorMessage.appendChild(errorMessage);
+        } 
+        else {
+            //? Create and append the error message
+            const errorMessage = createErrorMessage('Please upload a .JPG or .PNG file.');
+            avatarErrorMessage.appendChild(errorMessage);
+        }
+    } 
+    else if (fileSizeInMB > 0.5) {
+        //? Create and append the info-circle SVG element 
+        const infoCircle = createInfoCircle();
+        avatarErrorMessage.appendChild(infoCircle);
+
+        //? Create and append the error message
+        const errorMessage = createErrorMessage('File too large. Please upload a photo under 500KB.');
+        avatarErrorMessage.appendChild(errorMessage);
+    }
+
 }
