@@ -433,7 +433,13 @@ input#avatar {
 
 
 /** Error Styling */
-.avatar-error-message, .name-error-message, .email-error-message, .github-error-message {
+.avatar-error-message {
+    color: var(--button-background-color-hover);
+    font-size: 12px;
+    margin: 16px 0 16px;
+}
+
+.name-error-message, .email-error-message, .github-error-message {
     color: var(--button-background-color-hover);
     font-size: 12px;
     margin-bottom: 10px;
