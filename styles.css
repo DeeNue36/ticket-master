@@ -91,7 +91,7 @@ label {
     color: var(--text-color);
     width: 100%;
     font-size: var(--form-label-size);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 ::placeholder {
@@ -149,7 +149,7 @@ input#avatar {
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 164px;
+    height: 132px;
     cursor: pointer;
     color: var(--placeholder-color);
 }
@@ -243,7 +243,7 @@ input#avatar {
     backdrop-filter: blur(2px);
     border-radius: 10px;
     padding: 16px;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     outline: none;
     color: var(--text-color);
     font-family: inherit;
