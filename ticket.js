@@ -48,43 +48,13 @@ avatarInput.addEventListener('change', function() {
     if (fileSizeInMB > 0.5) {
         uploadInstructionsSubtext.style.display = 'none';
 
-        //? Create and append the info-circle SVG element
-        const svgNamespace = 'http://www.w3.org/2000/svg';
-            const infoCircle = document.createElementNS(svgNamespace, 'svg');
-            infoCircle.setAttribute('width', '16');
-            infoCircle.setAttribute('height', '16');
-            infoCircle.setAttribute('fill', 'none');
-            infoCircle.setAttribute('viewBox', '0 0 16 16');
-
-            const path1 = document.createElementNS(svgNamespace, 'path');
-            path1.setAttribute('stroke', '#e16151');
-            path1.setAttribute('stroke-linecap', 'round');
-            path1.setAttribute('stroke-linejoin', 'round');
-            path1.setAttribute('d', 'M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z');
-
-            const path2 = document.createElementNS(svgNamespace, 'path');
-            path2.setAttribute('fill', '#e16151');
-            path2.setAttribute('d', 'M8.004 10.462V7.596ZM8 5.57v-.042Z');
-
-            const path3 = document.createElementNS(svgNamespace, 'path');
-            path3.setAttribute('stroke', '#e16151');
-            path3.setAttribute('stroke-linecap', 'round');
-            path3.setAttribute('stroke-linejoin', 'round');
-            path3.setAttribute('d', 'M8.004 10.462V7.596M8 5.569v-.042');
-
-            infoCircle.appendChild(path1);
-            infoCircle.appendChild(path2);
-            infoCircle.appendChild(path3);
-
-            infoCircle.classList.add('error-info-circle');
-
+        //? Create and append the info-circle SVG element 
+        const infoCircle = createInfoCircle();
         avatarErrorMessage.appendChild(infoCircle);
 
-         //? Create and append the error message
-        const message = document.createElement('span');
-            message.classList.add('message');
-            avatarErrorMessage.appendChild(message);
-            message.innerText = 'File too large. Please upload a photo under 500KB.';
+        //? Create and append the error message
+        const errorMessage = createErrorMessage('File too large. Please upload a photo under 500KB.');
+        avatarErrorMessage.appendChild(errorMessage);
         return;
     }
     else {
@@ -152,46 +122,18 @@ generateTicket.addEventListener('click', function(e) {
     const avatar = avatarInput.files[0];
 
     if (!avatar) {
+
         //? Check if the error message already exists before creating a new one
         if (!avatarErrorMessage.querySelector('.error-info-circle')) { 
             uploadInstructionsSubtext.style.display = 'none';
+
             //? Create and append the info-circle SVG element 
-            const svgNamespace = 'http://www.w3.org/2000/svg';
-                const infoCircle = document.createElementNS(svgNamespace, 'svg');
-                infoCircle.setAttribute('width', '16');
-                infoCircle.setAttribute('height', '16');
-                infoCircle.setAttribute('fill', 'none');
-                infoCircle.setAttribute('viewBox', '0 0 16 16');
-
-                const path1 = document.createElementNS(svgNamespace, 'path');
-                path1.setAttribute('stroke', '#e16151');
-                path1.setAttribute('stroke-linecap', 'round');
-                path1.setAttribute('stroke-linejoin', 'round');
-                path1.setAttribute('d', 'M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z');
-
-                const path2 = document.createElementNS(svgNamespace, 'path');
-                path2.setAttribute('fill', '#e16151');
-                path2.setAttribute('d', 'M8.004 10.462V7.596ZM8 5.57v-.042Z');
-
-                const path3 = document.createElementNS(svgNamespace, 'path');
-                path3.setAttribute('stroke', '#e16151');
-                path3.setAttribute('stroke-linecap', 'round');
-                path3.setAttribute('stroke-linejoin', 'round');
-                path3.setAttribute('d', 'M8.004 10.462V7.596M8 5.569v-.042');
-
-                infoCircle.appendChild(path1);
-                infoCircle.appendChild(path2);
-                infoCircle.appendChild(path3);
-
-                infoCircle.classList.add('error-info-circle');
-
+            const infoCircle = createInfoCircle();
             avatarErrorMessage.appendChild(infoCircle);
-
+    
             //? Create and append the error message
-            const message = document.createElement('span');
-                message.classList.add('message');
-                avatarErrorMessage.appendChild(message);
-                message.innerText = 'File too large. Please upload a photo under 500KB.';
+            const errorMessage = createErrorMessage('File too large. Please upload a photo under 500KB.');
+            avatarErrorMessage.appendChild(errorMessage);
         }
         else {
             avatarErrorMessage.innerHTML = '';
@@ -200,45 +142,17 @@ generateTicket.addEventListener('click', function(e) {
 
     //! Validate full name input
     if (fullName === '') {
+
         //? Check if the error message already exists before creating a new one
         if (!nameErrorMessage.querySelector('.error-info-circle')) { 
+
             //? Create and append the info-circle SVG element 
-            const svgNamespace = 'http://www.w3.org/2000/svg';
-                const infoCircle = document.createElementNS(svgNamespace, 'svg');
-                infoCircle.setAttribute('width', '16');
-                infoCircle.setAttribute('height', '16');
-                infoCircle.setAttribute('fill', 'none');
-                infoCircle.setAttribute('viewBox', '0 0 16 16');
-
-                const path1 = document.createElementNS(svgNamespace, 'path');
-                path1.setAttribute('stroke', '#e16151');
-                path1.setAttribute('stroke-linecap', 'round');
-                path1.setAttribute('stroke-linejoin', 'round');
-                path1.setAttribute('d', 'M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z');
-
-                const path2 = document.createElementNS(svgNamespace, 'path');
-                path2.setAttribute('fill', '#e16151');
-                path2.setAttribute('d', 'M8.004 10.462V7.596ZM8 5.57v-.042Z');
-
-                const path3 = document.createElementNS(svgNamespace, 'path');
-                path3.setAttribute('stroke', '#e16151');
-                path3.setAttribute('stroke-linecap', 'round');
-                path3.setAttribute('stroke-linejoin', 'round');
-                path3.setAttribute('d', 'M8.004 10.462V7.596M8 5.569v-.042');
-
-                infoCircle.appendChild(path1);
-                infoCircle.appendChild(path2);
-                infoCircle.appendChild(path3);
-
-                infoCircle.classList.add('error-info-circle');
-
+            const infoCircle = createInfoCircle();
             nameErrorMessage.appendChild(infoCircle);
-
+    
             //? Create and append the error message
-            const message = document.createElement('span');
-                message.classList.add('message');
-                nameErrorMessage.appendChild(message);
-                message.innerText = 'Please enter your full name';
+            const errorMessage = createErrorMessage('Please enter your full name');
+            nameErrorMessage.appendChild(errorMessage);
 
             //? Add error border color
             nameInput.style.border = '1px solid var(--button-background-color-hover)';
@@ -251,45 +165,17 @@ generateTicket.addEventListener('click', function(e) {
 
     //! Validate email input
     if (email === '' || !emailRegex.test(email)) {
+
         //? Check if the error message already exists before creating a new one
         if (!emailErrorMessage.querySelector('.error-info-circle')) {
+
             //? Create and append the info-circle SVG element 
-            const svgNamespace = 'http://www.w3.org/2000/svg';
-                const infoCircle = document.createElementNS(svgNamespace, 'svg');
-                infoCircle.setAttribute('width', '16');
-                infoCircle.setAttribute('height', '16');
-                infoCircle.setAttribute('fill', 'none');
-                infoCircle.setAttribute('viewBox', '0 0 16 16');
-
-                const path1 = document.createElementNS(svgNamespace, 'path');
-                path1.setAttribute('stroke', '#e16151');
-                path1.setAttribute('stroke-linecap', 'round');
-                path1.setAttribute('stroke-linejoin', 'round');
-                path1.setAttribute('d', 'M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z');
-
-                const path2 = document.createElementNS(svgNamespace, 'path');
-                path2.setAttribute('fill', '#e16151');
-                path2.setAttribute('d', 'M8.004 10.462V7.596ZM8 5.57v-.042Z');
-
-                const path3 = document.createElementNS(svgNamespace, 'path');
-                path3.setAttribute('stroke', '#e16151');
-                path3.setAttribute('stroke-linecap', 'round');
-                path3.setAttribute('stroke-linejoin', 'round');
-                path3.setAttribute('d', 'M8.004 10.462V7.596M8 5.569v-.042');
-
-                infoCircle.appendChild(path1);
-                infoCircle.appendChild(path2);
-                infoCircle.appendChild(path3);
-
-                infoCircle.classList.add('error-info-circle');
-
+            const infoCircle = createInfoCircle();
             emailErrorMessage.appendChild(infoCircle);
-
+    
             //? Create and append the error message
-            const message = document.createElement('span');
-                message.classList.add('message');
-                emailErrorMessage.appendChild(message);
-                message.innerText = 'Please enter a valid email address';
+            const errorMessage = createErrorMessage('Please enter a valid email address');
+            emailErrorMessage.appendChild(errorMessage);
 
             //? Add error border color
             emailInput.style.border = '1px solid var(--button-background-color-hover)';
@@ -302,44 +188,17 @@ generateTicket.addEventListener('click', function(e) {
 
     //! Validate github username
     if (githubUsername === '') {
+
         //? Check if the error message already exists before creating a new one
         if (!githubErrorMessage.querySelector('.error-info-circle')) {
+
             //? Create and append the info-circle SVG element 
-            const svgNamespace = 'http://www.w3.org/2000/svg';
-                const infoCircle = document.createElementNS(svgNamespace, 'svg');
-                infoCircle.setAttribute('width', '16');
-                infoCircle.setAttribute('height', '16');
-                infoCircle.setAttribute('fill', 'none');
-                infoCircle.setAttribute('viewBox', '0 0 16 16');
-
-                const path1 = document.createElementNS(svgNamespace, 'path');
-                path1.setAttribute('stroke', '#e16151');
-                path1.setAttribute('stroke-linecap', 'round');
-                path1.setAttribute('stroke-linejoin', 'round');
-                path1.setAttribute('d', 'M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z');
-
-                const path2 = document.createElementNS(svgNamespace, 'path');
-                path2.setAttribute('fill', '#e16151');
-                path2.setAttribute('d', 'M8.004 10.462V7.596ZM8 5.57v-.042Z');
-
-                const path3 = document.createElementNS(svgNamespace, 'path');
-                path3.setAttribute('stroke', '#e16151');
-                path3.setAttribute('stroke-linecap', 'round');
-                path3.setAttribute('stroke-linejoin', 'round');
-                path3.setAttribute('d', 'M8.004 10.462V7.596M8 5.569v-.042');
-
-                infoCircle.appendChild(path1);
-                infoCircle.appendChild(path2);
-                infoCircle.appendChild(path3);
-
-                infoCircle.classList.add('error-info-circle');
-
-            
-
-            const message = document.createElement('span');
-                message.classList.add('message');
-                githubErrorMessage.appendChild(message);
-                message.innerText = 'Please enter your GitHub username';
+            const infoCircle = createInfoCircle();
+            githubErrorMessage.appendChild(infoCircle);
+    
+            //? Create and append the error message
+            const errorMessage = createErrorMessage('Please enter your GitHub username');
+            githubErrorMessage.appendChild(errorMessage);
 
             //? Add error border color
             githubInput.style.border = '1px solid var(--button-background-color-hover)';
@@ -391,14 +250,14 @@ function createInfoCircle(){
 
     infoCircle.classList.add('error-info-circle');
 
-    return infoCircle;
+    return infoCircle; // Returns the result of the function: the info-circle SVG element when it is called anywhere in the code
 }
 
 
-function createErrorMessage(error){
+function createErrorMessage(error) {
     const message = document.createElement('span');
     message.classList.add('message');
     message.innerText= error;
 
-    return message;
+    return message; // Returns the result of the function: the error message when it is called anywhere in the code
 }
