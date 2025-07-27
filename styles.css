@@ -454,6 +454,22 @@ input#avatar {
     vertical-align: middle;
 }
 
+.error-vibrate {
+    animation: shake .12s 5;
+}
+
+@keyframes shake {
+    0% { 
+        transform: translateX(0);
+    }
+    40% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(-10px);
+    }
+}
+
 
 /** Display Utilities */
 .hide {
