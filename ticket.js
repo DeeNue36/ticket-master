@@ -104,7 +104,7 @@ avatarInput.addEventListener('change', function() {
 });
 
 
-//! Remove the uploaded image 
+//! Event Listener — Remove the uploaded image 
 removeImage.addEventListener('click', function() {
     selectImage.innerHTML = '';
     avatarInput.value = '';
@@ -115,7 +115,7 @@ removeImage.addEventListener('click', function() {
 });
 
 
-//! Change the uploaded image
+//! Event Listener — Change the uploaded image 
 changeImage.addEventListener('click', function() {
     avatarInput.value = '';
     console.log('Change image button clicked');
@@ -123,16 +123,14 @@ changeImage.addEventListener('click', function() {
 });
 
 
-//! Drag and Drop Image Upload
+//! Drag and Drop Image Upload Event Listeners
 selectImage.addEventListener('dragover', function(e) {
     e.preventDefault();
     selectImage.style.border = '1px dashed #8784a4';
 });
-
 selectImage.addEventListener('dragleave', function() {
     selectImage.style.border = '1px solid #8784a480';
 });
-
 selectImage.addEventListener('drop', function(e) {
     e.preventDefault();
     // The DataTransfer object's files property returns a DataTransferItemList object,
@@ -144,16 +142,9 @@ selectImage.addEventListener('drop', function(e) {
 });
 
 
-//! Generate Ticket Button
+//! Generate Ticket Button Event Listener
 generateTicket.addEventListener('click', function(e) {
     e.preventDefault();
-    // const fullName = nameInput.value;
-
-    // const email = emailInput.value;
-    // const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    const githubUsername = githubInput.value;
-
     validateAvatar();
     validateFullName();
     validateEmail();
@@ -225,14 +216,13 @@ function validateAvatar() {
     const fileExtension = avatar?.name.split('.').pop().toLowerCase();
 
     avatarErrorMessage.innerHTML = '';
-    uploadInstructionsSubtext.style.display = 'none';
 
     //* Validate if an image/avatar has been uploaded
     if (!avatar || avatarFileSizeInMB > 0.5) {
+        uploadInstructionsSubtext.style.display = 'none';
 
         //? Check if the error message already exists before creating a new one
         if (!avatarErrorMessage.querySelector('.error-info-circle')) { 
-            // uploadInstructionsSubtext.style.display = 'none';
 
             //? Create and append the info-circle SVG element 
             const infoCircle = createInfoCircle();
@@ -244,14 +234,17 @@ function validateAvatar() {
         }
     }
     else if (fileExtension !== 'jpg' && fileExtension !== 'png') {
+        uploadInstructionsSubtext.style.display = 'none';
+
         //? Create and append the info-circle SVG element 
         const infoCircle = createInfoCircle();
         avatarErrorMessage.appendChild(infoCircle);
 
-        if (fileSizeInMB > 0.5) {
+        if (avatarFileSizeInMB > 0.5) {
             //? Create and append the error message
             const errorMessage = createErrorMessage('Please upload a .JPG or .PNG file under 500KB.');
             avatarErrorMessage.appendChild(errorMessage);
+            console.log(fileSizeInMB);
         } 
         else {
             //? Create and append the error message
@@ -259,7 +252,9 @@ function validateAvatar() {
             avatarErrorMessage.appendChild(errorMessage);
         }
     } 
-    else if (fileSizeInMB > 0.5) {
+    else if (avatarFileSizeInMB > 0.5) {
+        uploadInstructionsSubtext.style.display = 'none';
+
         //? Create and append the info-circle SVG element 
         const infoCircle = createInfoCircle();
         avatarErrorMessage.appendChild(infoCircle);
