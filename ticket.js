@@ -146,7 +146,6 @@ removeImage.addEventListener('click', function() {
 changeImage.addEventListener('click', function() {
     avatarInput.disabled = false;
     avatarInput.value = '';
-    console.log('Change image button clicked');
     avatarInput.click(); //? OR selectImage.click();
 });
 
@@ -173,16 +172,32 @@ selectImage.addEventListener('drop', function(e) {
 //! Generate Ticket Button Event Listener
 generateTicket.addEventListener('click', function(e) {
     e.preventDefault();
-    validateAvatar();
-    validateFullName();
-    validateEmail();
-    validateGithubUsername();
+    const isAvatarValid = validateAvatar();
+    const isFullNameValid = validateFullName();
+    const isEmailValid = validateEmail();
+    const isGithubUsernameValid = validateGithubUsername();
 
     // const formData = new FormData();
     // formData.append('avatar', avatar);
     // formData.append('fullName', fullName);
     // formData.append('email', email);
     // formData.append('githubUsername', githubUsername);
+
+    console.log('Validation results:');
+    console.log(`Avatar: ${isAvatarValid}`);
+    console.log(`Full Name: ${isFullNameValid}`);
+    console.log(`Email: ${isEmailValid}`);
+    console.log(`Github Username: ${isGithubUsernameValid}`);
+
+    if (isAvatarValid && isFullNameValid && isEmailValid && isGithubUsernameValid) {
+        //? Display the ticket
+        console.log('All fields are valid. Displaying the ticket...');
+        displayTicket.classList.remove('hide');
+        ticketApplicationContainer.classList.add('hide');
+    }
+    else {
+        console.log('One or more fields are invalid. Not displaying the ticket.');
+    }
 
     // ticketApplicationContainer.classList.add('hide');
     // displayTicket.classList.remove('hide');
@@ -222,7 +237,7 @@ function createInfoCircle(){
 
     infoCircle.classList.add('error-info-circle');
 
-    return infoCircle; // Returns the result of the function: the info-circle SVG element when it is called anywhere in the code
+    return infoCircle; // Returns the result of the function: (the info-circle SVG element) when it is called anywhere in the code
 }
 
 
@@ -232,7 +247,7 @@ function createErrorMessage(error) {
     message.classList.add('message');
     message.innerText= error;
 
-    return message; // Returns the result of the function: the error message when it is called anywhere in the code
+    return message; // Returns the result of the function: (the error message) when it is called anywhere in the code
 }
 
 
@@ -247,7 +262,7 @@ function validateAvatar() {
 
     //* Validates if an image/avatar has been uploaded
     if (selectImage.querySelector('img')) {
-        return true;
+        return true; // If an image has been uploaded, the function returns true
     }
 
     //* Validates if no image has been uploaded
@@ -323,10 +338,12 @@ function validateFullName() {
             //? Add error border color
             nameInput.style.border = '1px solid var(--button-background-color-hover)';
         }
+        return false; // Return false if the input is invalid
     }
     else {
         nameErrorMessage.innerHTML = '';
         nameInput.style.border = '1px solid var(--form-background-color)';
+        return true; // Return true if the input is valid
     }
 }
 
@@ -353,10 +370,12 @@ function validateEmail() {
             //? Add error border color
             emailInput.style.border = '1px solid var(--button-background-color-hover)';
         }
+        return false; // Return false if the input is invalid
     }
     else {
         emailErrorMessage.innerHTML = '';
         emailInput.style.border = '1px solid var(--form-background-color)';
+        return true; // Return true if the input is valid
     }
 }
 
@@ -382,9 +401,11 @@ function validateGithubUsername() {
             //? Add error border color
             githubInput.style.border = '1px solid var(--button-background-color-hover)';
         }
+        return false; // Return false if the input is invalid
     }
     else {
         githubErrorMessage.innerHTML = '';
         githubInput.style.border = '1px solid var(--form-background-color)';
+        return true; // Return true if the input is valid
     }
 }
