@@ -12,6 +12,9 @@ const nameInput = document.querySelector('#fullname');
 const emailInput = document.querySelector('#email');
 const githubInput = document.querySelector('#github-uname');
 
+// * File Upload Container
+const fileUploadContainer = document.querySelector('.file-upload');
+
 // * Upload Instructions
 const uploadInstructionsSubtext = document.querySelector('.upload-instructions-subtext');
 
@@ -47,7 +50,7 @@ avatarInput.addEventListener('change', function() {
 
     avatarErrorMessage.innerHTML = ''; // Clear any previous error messages
     
-    //* Check if the image is .JPG or .PNG
+    //* Check if the image is .JPG or .PNG file
     const fileExtension = userSelectedImage.name.split('.').pop().toLowerCase();
     if (fileExtension !== 'jpg' && fileExtension !== 'png') {
 
@@ -61,17 +64,27 @@ avatarInput.addEventListener('change', function() {
             // ? Create and append the error message
             const errorMessage = createErrorMessage('Please upload a .JPG or .PNG file under 500KB.');
             avatarErrorMessage.appendChild(errorMessage);
+            //? Add error animation
+            fileUploadContainer.classList.add('error-vibrate');
+            setTimeout(() => {
+                fileUploadContainer.classList.remove('error-vibrate');
+            }, 2000);
             return;
         } 
         else {
             // ? Create and append the error message
             const errorMessage = createErrorMessage('Please upload a .JPG or .PNG file.');
             avatarErrorMessage.appendChild(errorMessage);
+            //? Add error animation
+            fileUploadContainer.classList.add('error-vibrate');
+            setTimeout(() => {
+                fileUploadContainer.classList.remove('error-vibrate');
+            }, 2000);
             return;
         }
     }
 
-    //* Check if the image is under 500KB
+    //* Check if the image is more than or less than 500KB
     if (fileSizeInMB > 0.5) {
         uploadInstructionsSubtext.style.display = 'none';
 
@@ -82,6 +95,13 @@ avatarInput.addEventListener('change', function() {
         //? Create and append the error message
         const errorMessage = createErrorMessage('File too large. Please upload a photo under 500KB.');
         avatarErrorMessage.appendChild(errorMessage);
+
+        //? Add error animation
+        fileUploadContainer.classList.add('error-vibrate');
+        setTimeout(() => {
+            fileUploadContainer.classList.remove('error-vibrate');
+        }, 2000);
+        
         return;
     }
     else {
