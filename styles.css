@@ -35,7 +35,8 @@ body {
     align-items: center;
 }
 
-.overlay-background {
+body::after {
+    content: '';
     background-image: url('images/pattern-lines.svg'), url('images/pattern-squiggly-line-top.svg'), url('images/pattern-circle.svg'), url('images/pattern-squiggly-line-bottom-desktop.svg');
     background-size: cover, 20% 20%, 20% 20%, 600px 400px;
     background-position: top center, top 32px right, center right 200px, left bottom;
