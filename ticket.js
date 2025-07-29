@@ -123,17 +123,16 @@ avatarInput.addEventListener('change', function() {
         img.classList.add('uploaded-image');
         uploadInstructions.style.display = 'none';
         uploadControl.style.display = 'flex';
+        avatarInput.disabled = true; // Disable the avatar input field once an image has been uploaded
     };
 
     reader.readAsDataURL(userSelectedImage);
-
-    //* Disable the avatar input field once an image has been uploaded
-    avatarInput.disabled = true;
 });
 
 
 //! Event Listener — Remove the uploaded image 
 removeImage.addEventListener('click', function() {
+    avatarInput.disabled = false;
     selectImage.innerHTML = '';
     avatarInput.value = '';
     avatarErrorMessage.innerHTML = '';
@@ -145,6 +144,7 @@ removeImage.addEventListener('click', function() {
 
 //! Event Listener — Change the uploaded image 
 changeImage.addEventListener('click', function() {
+    avatarInput.disabled = false;
     avatarInput.value = '';
     console.log('Change image button clicked');
     avatarInput.click(); //? OR selectImage.click();
@@ -245,8 +245,13 @@ function validateAvatar() {
 
     avatarErrorMessage.innerHTML = '';
 
-    //* Validate if an image/avatar has been uploaded
-    if (!avatar || avatarFileSizeInMB > 0.5) {
+    //* Validates if an image/avatar has been uploaded
+    if (selectImage.querySelector('img')) {
+        return true;
+    }
+
+    //* Validates if no image has been uploaded
+    if (!avatar) {
         uploadInstructionsSubtext.style.display = 'none';
 
         //? Check if the error message already exists before creating a new one
@@ -261,6 +266,7 @@ function validateAvatar() {
             avatarErrorMessage.appendChild(errorMessage);
         }
     }
+    //* Validates if the uploaded image is not a .JPG or .PNG file
     else if (fileExtension !== 'jpg' && fileExtension !== 'png') {
         uploadInstructionsSubtext.style.display = 'none';
 
@@ -268,6 +274,7 @@ function validateAvatar() {
         const infoCircle = createInfoCircle();
         avatarErrorMessage.appendChild(infoCircle);
 
+        // * Validates if the unsupported image type size is greater or less than 500KB
         if (avatarFileSizeInMB > 0.5) {
             //? Create and append the error message
             const errorMessage = createErrorMessage('Please upload a .JPG or .PNG file under 500KB.');
@@ -280,6 +287,7 @@ function validateAvatar() {
             avatarErrorMessage.appendChild(errorMessage);
         }
     } 
+    //* Validates if the .JPG or .PNG image size is greater than 500KB
     else if (avatarFileSizeInMB > 0.5) {
         uploadInstructionsSubtext.style.display = 'none';
 
