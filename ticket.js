@@ -44,17 +44,13 @@ selectImage.addEventListener('click', function(){
 avatarInput.addEventListener('change', function() {
     const userSelectedImage = this.files[0];
     const reader = new FileReader();
-
     const fileSize = userSelectedImage.size;
     const fileSizeInMB = fileSize / (1024 * 1024);
 
-    avatarErrorMessage.innerHTML = ''; // Clear any previous error messages
+    avatarErrorMessage.innerHTML = ''; // Clear any previous error messages to avoid duplication or multiple error messages
+    avatarInput.value = ''; // Clear the input value to allow re-uploading the same file and trigger change event
     
-    // Clear the input value to allow re-uploading the same file and trigger change event
-    avatarInput.value = '';
-    selectImage.innerHTML = '';
-    
-    //* Check if the image is .JPG or .PNG file
+    //* Check if the image uploaded is a .JPG or .PNG file
     const fileExtension = userSelectedImage.name.split('.').pop().toLowerCase();
     if (fileExtension !== 'jpg' && fileExtension !== 'png') {
 
@@ -64,10 +60,12 @@ avatarInput.addEventListener('change', function() {
         const infoCircle = createInfoCircle();
         avatarErrorMessage.appendChild(infoCircle);
 
+        //* If the file is not a .JPG or .PNG file and is more than 500KB, display an error
         if (fileSizeInMB > 0.5) {
             // ? Create and append the error message
             const errorMessage = createErrorMessage('Please upload a .JPG or .PNG file under 500KB.');
             avatarErrorMessage.appendChild(errorMessage);
+
             //? Add error animation
             fileUploadContainer.classList.add('error-vibrate');
             setTimeout(() => {
@@ -75,10 +73,12 @@ avatarInput.addEventListener('change', function() {
             }, 2000);
             return;
         } 
+        //* If the file is not a .JPG or .PNG file and is less than 500KB, display an error
         else {
             // ? Create and append the error message
             const errorMessage = createErrorMessage('Please upload a .JPG or .PNG file.');
             avatarErrorMessage.appendChild(errorMessage);
+
             //? Add error animation
             fileUploadContainer.classList.add('error-vibrate');
             setTimeout(() => {
@@ -88,7 +88,7 @@ avatarInput.addEventListener('change', function() {
         }
     }
 
-    //* Check if the image is more than or less than 500KB
+    //* If the file is a .JPG or .PNG file, check if the image is more than or less than 500KB
     if (fileSizeInMB > 0.5) {
         uploadInstructionsSubtext.style.display = 'none';
 
@@ -113,6 +113,7 @@ avatarInput.addEventListener('change', function() {
         uploadInstructionsSubtext.style.display = 'block';
     }
 
+    // * If the file is a .JPG or .PNG file and is less than or equal to 500KB, display the image
     reader.onload = () => {
         const imgUrl = reader.result;
         selectImage.innerHTML = '';
@@ -125,6 +126,9 @@ avatarInput.addEventListener('change', function() {
     };
 
     reader.readAsDataURL(userSelectedImage);
+
+    //* Disable the avatar input field once an image has been uploaded
+    avatarInput.disabled = true;
 });
 
 
