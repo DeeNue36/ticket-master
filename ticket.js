@@ -50,6 +50,10 @@ avatarInput.addEventListener('change', function() {
 
     avatarErrorMessage.innerHTML = ''; // Clear any previous error messages
     
+    // Clear the input value to allow re-uploading the same file and trigger change event
+    avatarInput.value = '';
+    selectImage.innerHTML = '';
+    
     //* Check if the image is .JPG or .PNG file
     const fileExtension = userSelectedImage.name.split('.').pop().toLowerCase();
     if (fileExtension !== 'jpg' && fileExtension !== 'png') {
@@ -101,7 +105,7 @@ avatarInput.addEventListener('change', function() {
         setTimeout(() => {
             fileUploadContainer.classList.remove('error-vibrate');
         }, 2000);
-        
+
         return;
     }
     else {
