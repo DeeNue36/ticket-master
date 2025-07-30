@@ -33,6 +33,13 @@ const uploadControl = document.querySelector('.upload-controls');
 const removeImage = document.querySelector('.remove-button');
 const changeImage = document.querySelector('.change-button');
 
+// * Ticket Elements
+const nameInHeader = document.querySelector('.ticket-owner-name');
+const emailInParagraph = document.querySelector('.ticket-owner-email');
+const avatarOnTicket = document.querySelector('.user-avatar-img');
+const nameOnTicket = document.querySelector('.user-fullname');
+const githubOnTicket = document.querySelector('.user-github-username');
+
 
 //! Trigger the file selector when the element is clicked
 selectImage.addEventListener('click', function(){
@@ -203,7 +210,7 @@ generateTicket.addEventListener('click', function(e) {
     // todo: display the values of the form onto the ticket, the user's name in the congrats message and the user's email in the information section
 
     // get the values of the form
-    const avatarImage = userSelectedImage.name;
+    const avatarImage = userSelectedImage;
     console.log(userSelectedImage);
     const fullName = nameInput.value;
     const email = emailInput.value;
@@ -213,6 +220,12 @@ generateTicket.addEventListener('click', function(e) {
     console.log('The full name is:', {fullName})
     console.log('The email is:', {email})
     console.log('The github username is:', {githubUsername})
+
+    nameInHeader.innerText = fullName;
+    emailInParagraph.innerText = email;
+    avatarOnTicket.src = avatarImage;
+    nameOnTicket.innerText = fullName;
+    githubOnTicket.innerText = githubUsername;
 
 });
 
