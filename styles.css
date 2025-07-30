@@ -393,7 +393,7 @@ input#avatar {
     margin-bottom: 12px;
 }
 
-.user-github-and-email {
+.user-github {
     display: flex;
     align-items: flex-end;
 }
