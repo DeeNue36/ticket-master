@@ -215,15 +215,16 @@ generateTicket.addEventListener('click', function(e) {
     const fullName = nameInput.value;
     const email = emailInput.value;
     const githubUsername = githubInput.value;
-    
-    console.log('The avatar image is:', {avatarImage})
-    console.log('The full name is:', {fullName})
-    console.log('The email is:', {email})
-    console.log('The github username is:', {githubUsername})
 
+    // display the values of the form onto the ticket
     nameInHeader.innerText = fullName;
     emailInParagraph.innerText = email;
-    avatarOnTicket.src = avatarImage;
+
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        avatarOnTicket.src = event.target.result;
+    };
+    reader.readAsDataURL(avatarImage);
     nameOnTicket.innerText = fullName;
     githubOnTicket.innerText = githubUsername;
 
