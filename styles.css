@@ -296,10 +296,11 @@ input#avatar {
     -moz-background-clip: text;
     -o-background-clip: text;
     background-clip: text;
-    color: transparent;
+    color: transparent; /* OR text-fill-color: transparent; */
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
     -o-text-fill-color: transparent;
+    display: inline-block;
 }
 
 .confirmation-text {
@@ -391,6 +392,10 @@ input#avatar {
     font-size: 28px;
     letter-spacing: 1px;
     margin-bottom: 12px;
+}
+
+.user-fullname::first-letter, .ticket-owner-name::first-letter {
+    text-transform: capitalize;
 }
 
 .user-github {
