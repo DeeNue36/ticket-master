@@ -74,10 +74,7 @@ avatarInput.addEventListener('change', function() {
             avatarErrorMessage.appendChild(errorMessage);
 
             //? Add error animation
-            fileUploadContainer.classList.add('error-vibrate');
-            setTimeout(() => {
-                fileUploadContainer.classList.remove('error-vibrate');
-            }, 2000);
+            avatarErrorAnimation();
             return;
         } 
         //* If the file is not a .JPG or .PNG file and is less than 500KB, display an error
@@ -87,10 +84,7 @@ avatarInput.addEventListener('change', function() {
             avatarErrorMessage.appendChild(errorMessage);
 
             //? Add error animation
-            fileUploadContainer.classList.add('error-vibrate');
-            setTimeout(() => {
-                fileUploadContainer.classList.remove('error-vibrate');
-            }, 2000);
+            avatarErrorAnimation();
             return;
         }
     }
@@ -108,10 +102,7 @@ avatarInput.addEventListener('change', function() {
         avatarErrorMessage.appendChild(errorMessage);
 
         //? Add error animation
-        fileUploadContainer.classList.add('error-vibrate');
-        setTimeout(() => {
-            fileUploadContainer.classList.remove('error-vibrate');
-        }, 2000);
+        avatarErrorAnimation();
 
         return;
     }
@@ -469,4 +460,13 @@ function validateGithubUsername() {
         githubInput.style.border = '1px solid var(--form-background-color)';
         return true; // Return true if the input is valid
     }
+}
+
+
+//! Avatar Input Error Animation Function
+const avatarErrorAnimation = () => {
+    fileUploadContainer.classList.add('error-vibrate');
+    setTimeout(() => {
+        fileUploadContainer.classList.remove('error-vibrate');
+    }, 2000);
 }
