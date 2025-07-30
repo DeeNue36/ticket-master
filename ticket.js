@@ -34,6 +34,7 @@ const removeImage = document.querySelector('.remove-button');
 const changeImage = document.querySelector('.change-button');
 
 // * Ticket Elements
+const ticketContainer = document.querySelector('.ticket-container');
 const nameInHeader = document.querySelector('.ticket-owner-name');
 const emailInParagraph = document.querySelector('.ticket-owner-email');
 const avatarOnTicket = document.querySelector('.user-avatar-img');
@@ -217,16 +218,83 @@ generateTicket.addEventListener('click', function(e) {
     const githubUsername = githubInput.value;
 
     // display the values of the form onto the ticket
-    nameInHeader.innerText = fullName;
-    emailInParagraph.innerText = email;
+    // nameInHeader.innerText = fullName;
+    // emailInParagraph.innerText = email;
 
-    const reader = new FileReader();
-    reader.onload = function(event) {
-        avatarOnTicket.src = event.target.result;
-    };
-    reader.readAsDataURL(avatarImage);
-    nameOnTicket.innerText = fullName;
-    githubOnTicket.innerText = githubUsername;
+    // const reader = new FileReader();
+    // reader.onload = function(event) {
+    //     avatarImage.src = event.target.result;
+    // };
+    // reader.readAsDataURL(avatarImage);
+    // nameOnTicket.innerText = fullName;
+    // githubOnTicket.innerText = githubUsername;
+
+    // const userAvatar = document.createElement('img');
+    // userAvatar.src = URL.createObjectURL(avatarImage);
+    // console.log(userAvatar);
+
+    const userAvatar = URL.createObjectURL(avatarImage);
+
+    const ticketHTML = `
+        <header class="user-ticket-ready">
+                <img src="images/logo-full.svg" class="company-logo" alt="Coding Conf logo" />
+                <h1 class="congrats-text">
+                    Congrats, <span class="ticket-owner-name">${fullName}</span> 
+                    Your ticket is ready
+                </h1>
+                <p class="confirmation-text">
+                    We've emailed your ticket details to 
+                    <span class="ticket-owner-email">${email}</span>
+                    and will send updates in the run up to the event.
+                </p>
+            </header>
+
+            <!-- * Ticket -->
+            <div class="ticket">
+                <!-- * Main Ticket Area -->
+                <div class="main-area">
+                    <!-- * Company Event Logo and Name -->
+                    <div class="ticket-logo-container">
+                        <img src="images/logo-mark.svg" alt="ticket-logo" class="ticket-logo">
+                        <h2 class="ticket-company-name">Coding Conf</h2>
+                    </div>
+                    <!-- * Event Details: Date and Location -->
+                    <div class="event-details">
+                        <p class="date-and-location">
+                            July 24, 2025 / Austin, TX
+                        </p>
+                    </div>
+
+                    <!-- * User Ticket Details -->
+                    <div class="ticket-user-details">
+                        <div class="user-avatar">
+                            <img src="${userAvatar}" class="user-avatar-img" alt="user avatar" />
+                        </div>
+
+                        <div class="user-ticket-info">
+                            <h3 class="user-fullname">${fullName}</h3>
+                            
+                            <div class="user-github">
+                                <img src="images/icon-github.svg" class="github-icon" alt="github icon" />
+                                <span class="user-github-username">@${githubUsername}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- * Minor/Smaller Ticket Area -->
+                <div class="minor-area">
+                    <div class="ticket-id">
+                        <span class="ticket-id-number">
+                            #000001
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+    `;
+
+    ticketContainer.innerHTML = ticketHTML;
 
 });
 
