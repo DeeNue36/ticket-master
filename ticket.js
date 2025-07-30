@@ -33,13 +33,8 @@ const uploadControl = document.querySelector('.upload-controls');
 const removeImage = document.querySelector('.remove-button');
 const changeImage = document.querySelector('.change-button');
 
-// * Ticket Elements
+// * Ticket Container
 const ticketContainer = document.querySelector('.ticket-container');
-const nameInHeader = document.querySelector('.ticket-owner-name');
-const emailInParagraph = document.querySelector('.ticket-owner-email');
-const avatarOnTicket = document.querySelector('.user-avatar-img');
-const nameOnTicket = document.querySelector('.user-fullname');
-const githubOnTicket = document.querySelector('.user-github-username');
 
 
 //! Trigger the file selector when the element is clicked
@@ -186,52 +181,20 @@ generateTicket.addEventListener('click', function(e) {
     const isEmailValid = validateEmail();
     const isGithubUsernameValid = validateGithubUsername();
 
-    // const formData = new FormData();
-    // formData.append('avatar', avatar);
-    // formData.append('fullName', fullName);
-    // formData.append('email', email);
-    // formData.append('githubUsername', githubUsername);
-
-    console.log('Validation results:');
-    console.log(`Avatar: ${isAvatarValid}`);
-    console.log(`Full Name: ${isFullNameValid}`);
-    console.log(`Email: ${isEmailValid}`);
-    console.log(`Github Username: ${isGithubUsernameValid}`);
-
     if (isAvatarValid && isFullNameValid && isEmailValid && isGithubUsernameValid) {
         //? Display the ticket
-        console.log('All fields are valid. Displaying the ticket...');
         displayTicket.classList.remove('hide');
         ticketApplicationContainer.classList.add('hide');
     }
     else {
-        console.log('One or more fields are invalid. Not displaying the ticket.');
+        return;
     }
 
-    // todo: display the values of the form onto the ticket, the user's name in the congrats message and the user's email in the information section
-
-    // get the values of the form
+    // Get the values of the form
     const avatarImage = userSelectedImage;
-    console.log(userSelectedImage);
     const fullName = nameInput.value;
     const email = emailInput.value;
     const githubUsername = githubInput.value;
-
-    // display the values of the form onto the ticket
-    // nameInHeader.innerText = fullName;
-    // emailInParagraph.innerText = email;
-
-    // const reader = new FileReader();
-    // reader.onload = function(event) {
-    //     avatarImage.src = event.target.result;
-    // };
-    // reader.readAsDataURL(avatarImage);
-    // nameOnTicket.innerText = fullName;
-    // githubOnTicket.innerText = githubUsername;
-
-    // const userAvatar = document.createElement('img');
-    // userAvatar.src = URL.createObjectURL(avatarImage);
-    // console.log(userAvatar);
 
     const userAvatar = URL.createObjectURL(avatarImage);
 
