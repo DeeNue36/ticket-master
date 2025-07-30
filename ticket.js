@@ -39,10 +39,11 @@ selectImage.addEventListener('click', function(){
     avatarInput.click();
 });
 
+let userSelectedImage;
 
 //! Listens for a file to be selected, creates an image element and displays the image 
 avatarInput.addEventListener('change', function() {
-    const userSelectedImage = this.files[0];
+    userSelectedImage = this.files[0];
     const reader = new FileReader();
     const fileSize = userSelectedImage.size;
     const fileSizeInMB = fileSize / (1024 * 1024);
@@ -199,8 +200,20 @@ generateTicket.addEventListener('click', function(e) {
         console.log('One or more fields are invalid. Not displaying the ticket.');
     }
 
-    // ticketApplicationContainer.classList.add('hide');
-    // displayTicket.classList.remove('hide');
+    // todo: display the values of the form onto the ticket, the user's name in the congrats message and the user's email in the information section
+
+    // get the values of the form
+    const avatarImage = userSelectedImage.name;
+    console.log(userSelectedImage);
+    const fullName = nameInput.value;
+    const email = emailInput.value;
+    const githubUsername = githubInput.value;
+    
+    console.log('The avatar image is:', {avatarImage})
+    console.log('The full name is:', {fullName})
+    console.log('The email is:', {email})
+    console.log('The github username is:', {githubUsername})
+
 });
 
 
