@@ -42,7 +42,10 @@ selectImage.addEventListener('click', function(){
     avatarInput.click();
 });
 
+
+//* Image that the user uploads declared globally to enable access in any function
 let userSelectedImage;
+
 
 //! Listens for a file to be selected, creates an image element and displays the image 
 avatarInput.addEventListener('change', function() {
