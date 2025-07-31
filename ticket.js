@@ -122,6 +122,15 @@ avatarInput.addEventListener('change', function() {
         uploadInstructions.style.display = 'none';
         uploadControl.style.display = 'flex';
         avatarInput.disabled = true; // Disable the avatar input field once an image has been uploaded
+        
+        if (userSelectedImage) {
+            const avatarPseudoElement = document.styleSheets[0];
+            const newAvatarStyle = avatarPseudoElement.insertRule('.upload::before { content: ""; background: none; }', avatarPseudoElement.cssRules.length);
+        } 
+        else {
+            // const avatarPseudoElement = document.styleSheets[0];
+            // const newAvatarStyle = avatarPseudoElement.insertRule('.upload::before { content: ""; background: "url("images/icon-upload.svg") no-repeat center center / 32px 32px"; }', avatarPseudoElement.cssRules.length);
+        }
     };
 
     reader.readAsDataURL(userSelectedImage);
