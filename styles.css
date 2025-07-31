@@ -55,9 +55,6 @@ body::after {
 
 
 /** Ticket Application Form Container Styling */
-/* .ticket-application {
-    display: none;
-} */
 
 
 /** Ticket Application Form Header  Styling*/
@@ -485,5 +482,5 @@ input#avatar {
     display: block;
 }
 
-/* todo: commit and push first, commit message: switched upload bg to color to ensure it stays when an image is uploaded*/
+
 /* todo: Add media queries */
