@@ -186,12 +186,12 @@ generateTicket.addEventListener('click', function(e) {
 
     // Get the values of the form
     const avatarImage = userSelectedImage;
+    const userAvatar = URL.createObjectURL(avatarImage);
     const fullName = nameInput.value;
     const email = emailInput.value;
     const githubUsername = githubInput.value;
 
-    const userAvatar = URL.createObjectURL(avatarImage);
-
+    //* Create the ticket HTML
     const ticketHTML = `
         <header class="user-ticket-ready">
                 <img src="images/logo-full.svg" class="company-logo" alt="Coding Conf logo" />
@@ -372,11 +372,12 @@ function validateAvatar() {
 //! Validate full name
 function validateFullName() {
     const fullName = nameInput.value;
+    const fullNameRegex = /^[a-zA-Z]+ [a-zA-Z]+$/;
 
     //* Validate full name input
-    if (fullName === '') {
+    if (fullName === '' || !fullNameRegex.test(fullName)) {
 
-        //? Check if the error message already exists before creating a new one
+        //? If the error message doesn't exist create and display it
         if (!nameErrorMessage.querySelector('.error-info-circle')) { 
 
             //? Create and append the info-circle SVG element 
@@ -390,6 +391,8 @@ function validateFullName() {
             //? Add error border color
             nameInput.style.border = '1px solid var(--button-background-color-hover)';
         }
+        //? Add error animation
+        fullnameErrorAnimation();
         return false; // Return false if the input is invalid
     }
     else {
@@ -470,3 +473,17 @@ const avatarErrorAnimation = () => {
         fileUploadContainer.classList.remove('error-vibrate');
     }, 2000);
 }
+
+
+//! Fullname Input Error Animation Function
+const fullnameErrorAnimation = () => {
+    nameInput.classList.add('error-vibrate');
+    setTimeout(() => {
+        nameInput.classList.remove('error-vibrate');
+    }, 2000);
+}
+
+// todo: Commit and push first, commit message: created full name error animation function
+// todo: create the remaining error animations for email and github username
+// todo: add the avatar error animation to the validateAvatar function
+// todo: remove the background image in the upload element(selectImage) when an image is successfully uploaded
