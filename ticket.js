@@ -255,6 +255,13 @@ generateTicket.addEventListener('click', function(e) {
 
     ticketContainer.innerHTML = ticketHTML;
 
+    // * Clear the form inputs
+    selectImage.innerHTML = '';
+    avatarInput.value = '';
+    nameInput.value = '';
+    emailInput.value = '';
+    githubInput.value = '';
+
 });
 
 
