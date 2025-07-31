@@ -191,6 +191,8 @@ generateTicket.addEventListener('click', function(e) {
     const email = emailInput.value;
     const githubUsername = githubInput.value;
 
+    const ticketID = Math.floor(Math.random() * 10000);
+
     //* Create the ticket HTML
     const ticketHTML = `
         <header class="user-ticket-ready">
@@ -243,7 +245,7 @@ generateTicket.addEventListener('click', function(e) {
                 <div class="minor-area">
                     <div class="ticket-id">
                         <span class="ticket-id-number">
-                            #000001
+                            #${ticketID.toString().padStart(5, '0')}
                         </span>
                     </div>
                 </div>
@@ -483,7 +485,7 @@ const fullnameErrorAnimation = () => {
     }, 2000);
 }
 
-// todo: Commit and push first, commit message: created full name error animation function
+
 // todo: create the remaining error animations for email and github username
 // todo: add the avatar error animation to the validateAvatar function
 // todo: remove the background image in the upload element(selectImage) when an image is successfully uploaded
