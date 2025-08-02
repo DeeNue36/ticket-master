@@ -112,6 +112,9 @@ avatarInput.addEventListener('change', function() {
     }
 
     // * If the file is a .JPG or .PNG file and is less than or equal to 500KB, display the image
+
+    // let avatarStyleIndex = null;
+
     reader.onload = () => {
         const imgUrl = reader.result;
         selectImage.innerHTML = '';
@@ -122,18 +125,19 @@ avatarInput.addEventListener('change', function() {
         uploadInstructions.style.display = 'none';
         uploadControl.style.display = 'flex';
         avatarInput.disabled = true; // Disable the avatar input field once an image has been uploaded
-        
-        if (userSelectedImage) {
-            const avatarPseudoElement = document.styleSheets[0];
-            const newAvatarStyle = avatarPseudoElement.insertRule('.upload::before { content: ""; background: none; }', avatarPseudoElement.cssRules.length);
-        } 
-        else {
-            // const avatarPseudoElement = document.styleSheets[0];
-            // const newAvatarStyle = avatarPseudoElement.insertRule('.upload::before { content: ""; background: "url("images/icon-upload.svg") no-repeat center center / 32px 32px"; }', avatarPseudoElement.cssRules.length);
-        }
+        selectImage.classList.add('uploaded');
     };
 
     reader.readAsDataURL(userSelectedImage);
+
+    // if (userSelectedImage) {
+    //     const avatarPseudoElement = document.styleSheets[0];
+    //     const newAvatarStyle = avatarPseudoElement.insertRule('.upload::before { content: ""; background: none; width: 0; height: 0; }', avatarPseudoElement.cssRules.length);
+    // } 
+    // else {
+    //     // const avatarPseudoElement = document.styleSheets[0];
+    //     // const newAvatarStyle = avatarPseudoElement.insertRule('.upload::before { content: ""; background: "url("images/icon-upload.svg") no-repeat center center / 32px 32px"; }', avatarPseudoElement.cssRules.length);
+    // }
 });
 
 
