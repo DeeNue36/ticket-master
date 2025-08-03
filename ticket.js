@@ -320,7 +320,7 @@ function validateAvatar() {
     const avatarFileSizeInMB = avatarFileSize / (1024 * 1024);
     const fileExtension = avatar?.name.split('.').pop().toLowerCase();
 
-    avatarErrorMessage.innerHTML = '';
+    avatarErrorMessage.innerHTML = ''; // Clear any previous error messages
 
     //* Validates if an image/avatar has been uploaded
     if (selectImage.querySelector('img')) {
@@ -331,7 +331,7 @@ function validateAvatar() {
     if (!avatar) {
         uploadInstructionsSubtext.style.display = 'none';
 
-        //? Check if the error message already exists before creating a new one
+        //? When the avatar input is empty if the error message doesn't exist create and display it
         if (!avatarErrorMessage.querySelector('.error-info-circle')) { 
 
             //? Create and append the info-circle SVG element 
@@ -342,6 +342,8 @@ function validateAvatar() {
             const errorMessage = createErrorMessage('Please upload a photo.');
             avatarErrorMessage.appendChild(errorMessage);
         }
+        //? Add error animation
+        avatarErrorAnimation();
     }
     //* Validates if the uploaded image is not a .JPG or .PNG file
     else if (fileExtension !== 'jpg' && fileExtension !== 'png') {
@@ -351,7 +353,7 @@ function validateAvatar() {
         const infoCircle = createInfoCircle();
         avatarErrorMessage.appendChild(infoCircle);
 
-        // * Validates if the unsupported image type size is greater or less than 500KB
+        // * Validates if the uploaded image is not a .JPG or .PNG file and its size is greater or less than 500KB
         if (avatarFileSizeInMB > 0.5) {
             //? Create and append the error message
             const errorMessage = createErrorMessage('Please upload a .JPG or .PNG file under 500KB.');
@@ -387,7 +389,7 @@ function validateFullName() {
     //* Validate full name input
     if (fullName === '' || !fullNameRegex.test(fullName)) {
 
-        //? If the error message doesn't exist create and display it
+        //? When the input is empty if the error message doesn't exist create and display it, else remove it
         if (!nameErrorMessage.querySelector('.error-info-circle')) { 
 
             //? Create and append the info-circle SVG element 
@@ -421,7 +423,7 @@ function validateEmail() {
     //* Validate email input
     if (email === '' || !emailRegex.test(email)) {
 
-        //? Check if the error message already exists before creating a new one
+        //? When the input is empty if the error message doesn't exist create and display it, else remove it
         if (!emailErrorMessage.querySelector('.error-info-circle')) {
 
             //? Create and append the info-circle SVG element 
@@ -435,6 +437,8 @@ function validateEmail() {
             //? Add error border color
             emailInput.style.border = '1px solid var(--button-background-color-hover)';
         }
+        //? Add error animation
+        emailErrorAnimation();
         return false; // Return false if the input is invalid
     }
     else {
@@ -452,7 +456,7 @@ function validateGithubUsername() {
     //* Validate github username input
     if (githubUsername === '') {
 
-        //? Check if the error message already exists before creating a new one
+        //? When the input is empty if the error message doesn't exist create and display it, else remove it 
         if (!githubErrorMessage.querySelector('.error-info-circle')) {
 
             //? Create and append the info-circle SVG element 
@@ -466,6 +470,8 @@ function validateGithubUsername() {
             //? Add error border color
             githubInput.style.border = '1px solid var(--button-background-color-hover)';
         }
+        //? Add error animation
+        githubErrorAnimation();
         return false; // Return false if the input is invalid
     }
     else {
@@ -490,6 +496,24 @@ const fullnameErrorAnimation = () => {
     nameInput.classList.add('error-vibrate');
     setTimeout(() => {
         nameInput.classList.remove('error-vibrate');
+    }, 2000);
+}
+
+
+//! Email Input Error Animation Function
+const emailErrorAnimation = () => {
+    emailInput.classList.add('error-vibrate');
+    setTimeout(() => {
+        emailInput.classList.remove('error-vibrate');
+    }, 2000);
+}
+
+
+//! Github Username Input Error Animation Function
+const githubErrorAnimation = () => {
+    githubInput.classList.add('error-vibrate');
+    setTimeout(() => {
+        githubInput.classList.remove('error-vibrate');
     }, 2000);
 }
 
