@@ -518,6 +518,3 @@ const githubErrorAnimation = () => {
         githubInput.classList.remove('error-vibrate');
     }, 2000);
 }
-
-
-// todo: remove the background image in the upload element(selectImage) when an image is successfully uploaded
