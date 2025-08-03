@@ -135,6 +135,7 @@ removeImage.addEventListener('click', function() {
     selectImage.innerHTML = '';
     avatarInput.value = '';
     avatarErrorMessage.innerHTML = '';
+    selectImage.classList.remove('uploaded');
     uploadInstructions.style.display = 'block'; //? Display the upload instructions
     uploadControl.style.display = 'none'; //? Hide the upload control buttons
     uploadInstructionsSubtext.style.display = 'block'; //? Display the upload instructions subtext
@@ -185,13 +186,14 @@ generateTicket.addEventListener('click', function(e) {
         return;
     }
 
-    // Get the values of the form
+    //* Get the values of the form
     const avatarImage = userSelectedImage;
-    const userAvatar = URL.createObjectURL(avatarImage);
+    const userAvatar = URL.createObjectURL(avatarImage); // Create an object URL for the uploaded avatar image
     const fullName = nameInput.value;
     const email = emailInput.value;
     const githubUsername = githubInput.value;
 
+    //* Generate a random ticket ID number and pad it to 5 digits
     const ticketID = Math.floor(Math.random() * 10000);
 
     //* Create the ticket HTML
@@ -256,7 +258,7 @@ generateTicket.addEventListener('click', function(e) {
 
     ticketContainer.innerHTML = ticketHTML;
 
-    // * Clear the form inputs
+    // * Clear the form inputs once the form is submitted and the  ticket has been generated
     selectImage.innerHTML = '';
     avatarInput.value = '';
     nameInput.value = '';
@@ -381,7 +383,7 @@ function validateAvatar() {
 }
 
 
-//! Validate full name
+//! Validate full name input field
 function validateFullName() {
     const fullName = nameInput.value;
     const fullNameRegex = /^[a-zA-Z]+ [a-zA-Z]+$/;
@@ -415,7 +417,7 @@ function validateFullName() {
 }
 
 
-//! Validate email
+//! Validate email address input field
 function validateEmail() {
     const email = emailInput.value;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -449,7 +451,7 @@ function validateEmail() {
 }
 
 
-//! Validate github username
+//! Validate github username input field
 function validateGithubUsername() {
     const githubUsername = githubInput.value;
 
@@ -518,6 +520,4 @@ const githubErrorAnimation = () => {
 }
 
 
-// todo: create the remaining error animations for email and github username
-// todo: add the avatar error animation to the validateAvatar function
 // todo: remove the background image in the upload element(selectImage) when an image is successfully uploaded
