@@ -33,13 +33,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 0 24px 0;
+    /* margin: 0 0 24px 0; */
 }
 
 body::after {
     content: '';
     background-image: url('images/pattern-lines.svg'), url('images/pattern-circle.svg'), url('images/pattern-squiggly-line-top.svg'), url('images/pattern-circle.svg'), url('images/pattern-squiggly-line-bottom-desktop.svg');
-    background-size: cover, 20% 20%, 24% 24%, 20% 20%, 48% 54%;
+    background-size: cover, 20% 20%, 24% 24%, 20% 20%, 48% auto;
     background-position: top center, top -64px left, top 32px right, top 480px right 256px, bottom left;
     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
     height: 100vh;
@@ -48,7 +48,7 @@ body::after {
     top: 0;
     left: 0;
     z-index: -1;
-    padding: 24px 0 0 0;
+    /* padding: 24px 0 0 0; */
 }
 
 .container {
