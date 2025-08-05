@@ -37,10 +37,10 @@ body {
 
 body::after {
     content: '';
-    background-image: url('images/pattern-lines.svg'), url('images/pattern-squiggly-line-top.svg'), url('images/pattern-circle.svg'), url('images/pattern-squiggly-line-bottom-desktop.svg');
-    background-size: cover, 20% 20%, 20% 20%, 600px 400px;
-    background-position: top center, top 32px right, center right 200px, left bottom;
-    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    background-image: url('images/pattern-lines.svg'), url('images/pattern-circle.svg'), url('images/pattern-squiggly-line-top.svg'), url('images/pattern-circle.svg'), url('images/pattern-squiggly-line-bottom-desktop.svg');
+    background-size: cover, 20% 20%, 20% 20%, 20% 20%, 600px 400px;
+    background-position: top center, top -64px left, top 32px right, center right 200px, left bottom;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
     height: 100vh;
     width: 100vw;
     position: absolute;
@@ -490,4 +490,4 @@ input#avatar {
 }
 
 
-/* todo: Add media queriemms */
+/* todo: Add media queries */
