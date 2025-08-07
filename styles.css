@@ -496,9 +496,12 @@ input#avatar {
 
 @media screen and (max-width: 768px) {
     :root {
-        --background-image-tablet: url('images/background-tablet');
-        --background-image-mobile: url('images/background-mobile');
-        --pattern-squiggly-line-tablet-mobile: url('images/pattern-squiggly-line-mobile-tablet');
+        --background-image-tablet: url('images/background-tablet.png') no-repeat center center / cover;
+        --background-image-mobile: url('images/background-mobile.png');
+        --pattern-squiggly-line-tablet-mobile: url('images/pattern-squiggly-line-mobile-tablet.svg');
     }
     
+    body {
+        background: var(--background-image-tablet);
+    }
 }
