@@ -493,3 +493,8 @@ input#avatar {
 
 
 /* todo: Add media queries */
+:root {
+    --background-image-tablet: url('images/background-tablet');
+    --background-image-mobile: url('images/background-mobile');
+    --pattern-squiggly-line-tablet-mobile: url('images/pattern-squiggly-line-mobile-tablet');
+}
