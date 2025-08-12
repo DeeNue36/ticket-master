@@ -502,4 +502,25 @@ input#avatar {
     body {
         background: var(--background-image-tablet);
     }
+    body::after {
+        background-position: top center, top -64px left, top 16px right, top 480px right 4%, bottom left;
+    }
+    .container {
+        max-width: 640px;
+    }
+    .intro-text, .congrats-text {
+        font-size: 3.2em;
+    }
+    .upload-instructions-subtext {
+        margin: 8px 0 12px;
+    }
+    #fullname, #email, #github-uname {
+        margin-bottom: 8px;
+    }
+    .avatar-error-message {
+        margin: 8px 0 8px;
+    }
+    .name-error-message, .email-error-message, .github-error-message {
+        margin-bottom: 5px;
+    }
 }
