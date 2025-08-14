@@ -503,6 +503,7 @@ input#avatar {
         background: var(--background-image-tablet);
     }
     body::after {
+        background-size: cover, 20% 20%, 20% 8%, 20% 20%, 64% auto;
         background-position: top center, top -64px left, top 16px right, top 480px right 4%, bottom left;
     }
     .container {
