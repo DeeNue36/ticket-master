@@ -510,6 +510,10 @@ input#avatar {
     }
     .intro-text, .congrats-text {
         font-size: 3.2em;
+        margin: 24px 0 16px;
+    }
+    .intro-subtext {
+        margin-bottom: 24px;
     }
     .upload-instructions-subtext {
         margin: 8px 0 12px;
