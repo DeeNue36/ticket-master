@@ -508,32 +508,18 @@ input#avatar {
     
     body {
         background: var(--background-image-tablet);
+        margin-bottom: 32px;
     }
     body::after {
         background-size: cover, 20% 20%, 20% 8%, 20% 20%, 64% auto;
         background-position: top center, top -64px left, top 16px right, top 480px right 4%, bottom left;
+        padding-bottom: 32px;
     }
     .container {
         max-width: 640px;
     }
     .intro-text, .congrats-text {
         font-size: 3.2em;
-        margin: 24px 0 16px;
-    }
-    .intro-subtext {
-        margin-bottom: 24px;
-    }
-    .upload-instructions-subtext {
-        margin: 8px 0 12px;
-    }
-    #fullname, #email, #github-uname {
-        margin-bottom: 8px;
-    }
-    .avatar-error-message {
-        margin: 8px 0 8px;
-    }
-    .name-error-message, .email-error-message, .github-error-message {
-        margin-bottom: 5px;
     }
 }
 
