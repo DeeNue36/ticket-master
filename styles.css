@@ -538,7 +538,9 @@ input#avatar {
     }
     body::after {
         background-image: url('images/pattern-lines.svg'), url('images/pattern-circle.svg'), url('images/pattern-squiggly-line-top.svg'), url('images/pattern-circle.svg'), var(--pattern-squiggly-line-tablet-mobile);
-        background-size: cover, 20% 20%, 20% 8%, 20% 20%, 64% auto;
+        background-size: cover, 20% 20%, 24% 8%, 32% 32%, 64% auto;
+        background-position: top center, top -64px left, top 16px right, top 492px right -64px, bottom left;
+        height: 964px;
     }
     .container {
         max-width: 360px;
@@ -547,3 +549,7 @@ input#avatar {
         font-size: 2.4em;
     }  
 }
+
+
+/* Todo: add media query for iphone SE and reduce container max-width for iphone 8  */
+/* Todo: Also consider adding more margin and padding for screens from width 430px which in turn will cause an increase in the body::after height */
