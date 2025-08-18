@@ -551,5 +551,20 @@ input#avatar {
 }
 
 
+/** iPhone 8 */
+@media screen and (max-width: 375px) {
+    .container {
+        max-width: 320px;
+    }
+}
+
+/** iPhone SE */
+@media screen and (max-width: 320px) {
+    .container {
+        max-width: 280px;
+    }
+}
+
+
 /* Todo: add media query for iphone SE and reduce container max-width for iphone 8  */
 /* Todo: Also consider adding more margin and padding for screens from width 430px which in turn will cause an increase in the body::after height */
