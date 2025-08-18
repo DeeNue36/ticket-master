@@ -513,7 +513,7 @@ input#avatar {
     body::after {
         background-size: cover, 20% 20%, 20% 8%, 20% 20%, 64% auto;
         background-position: top center, top -64px left, top 16px right, top 480px right 4%, bottom left;
-        padding-bottom: 32px;
+        /* padding-bottom: 32px; */
     }
     .container {
         max-width: 640px;
@@ -535,12 +535,13 @@ input#avatar {
 @media screen and (max-width: 480px) {
     body {
         background: var(--background-image-mobile);
+        min-height: 1032px;
     }
     body::after {
         background-image: url('images/pattern-lines.svg'), url('images/pattern-circle.svg'), url('images/pattern-squiggly-line-top.svg'), url('images/pattern-circle.svg'), var(--pattern-squiggly-line-tablet-mobile);
         background-size: cover, 24% 24%, 24% 8%, 32% 32%, 64% auto;
         background-position: top center, top -80px left -20px, top 16px right, top 492px right -64px, bottom left;
-        height: 964px;
+        height: 1064px;
     }
     .container {
         max-width: 360px;
@@ -553,8 +554,11 @@ input#avatar {
 
 /** iPhone 8 */
 @media screen and (max-width: 375px) {
+    body {
+        min-height: 1032px;
+    }
     body::after {
-        height: 986px;
+        /* height: 1032px; */
     }
     .container {
         max-width: 320px;
@@ -563,9 +567,9 @@ input#avatar {
 
 /** iPhone SE */
 @media screen and (max-width: 320px) {
-    body::after {
-        height: 1002px;
-    }
+    /* body::after {
+        height: 1064px;
+    } */
     .container {
         max-width: 280px;
     }
