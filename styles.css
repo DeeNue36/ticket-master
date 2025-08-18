@@ -557,9 +557,6 @@ input#avatar {
     body {
         min-height: 1032px;
     }
-    body::after {
-        /* height: 1032px; */
-    }
     .container {
         max-width: 320px;
     }
@@ -567,9 +564,6 @@ input#avatar {
 
 /** iPhone SE */
 @media screen and (max-width: 320px) {
-    /* body::after {
-        height: 1064px;
-    } */
     .container {
         max-width: 280px;
     }
