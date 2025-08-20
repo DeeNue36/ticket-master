@@ -547,7 +547,8 @@ input#avatar {
         max-width: 360px;
     }
     .intro-text, .congrats-text {
-        font-size: 2.4em;
+        font-size: 2em;
+        word-spacing: 0px;
     }  
 }
 
