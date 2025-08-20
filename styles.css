@@ -570,5 +570,5 @@ input#avatar {
 }
 
 
-/* Todo: add media query for iphone SE and reduce container max-width for iphone 8  */
+/* Todo: Add media query for the ticket, font sizes on small screens */
 /* Todo: Also consider adding more margin and padding for screens from width 430px which in turn will cause an increase in the body::after height */
