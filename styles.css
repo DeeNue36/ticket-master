@@ -324,7 +324,7 @@ input#avatar {
 .ticket {
     background-image: url('images/pattern-ticket.svg');
     background-size: cover;
-    background-position: center;
+    background-position: center center;
     background-repeat: no-repeat;
     width: 600px;
     height: 280px;
@@ -549,7 +549,18 @@ input#avatar {
     .intro-text, .congrats-text {
         font-size: 2em;
         word-spacing: 0px;
-    }  
+    }
+    .user-ticket-ready .company-logo {
+        margin-top: 0;
+    }
+    .ticket-container {
+        max-width: 400px;
+    }
+    .ticket {
+        place-self: center; /* OR justify-self: center; */
+        margin: 0;
+        transform: scale(0.68); 
+    }
 }
 
 
@@ -570,6 +581,5 @@ input#avatar {
     }
 }
 
-
-/* Todo: Add media query for the ticket, font sizes on small screens */
+/* Todo: Add the transform property for smaller screen sizes */
 /* Todo: Also consider adding more margin and padding for screens from width 430px which in turn will cause an increase in the body::after height */
