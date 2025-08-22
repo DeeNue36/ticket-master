@@ -564,6 +564,14 @@ input#avatar {
 }
 
 
+/** Reduce ticket size for smaller screen sizes starting from 414px */
+@media screen and (max-width: 414px) {
+    .ticket {
+        transform: scale(0.6); 
+    }
+}
+
+
 /** iPhone 8 */
 @media screen and (max-width: 375px) {
     body {
