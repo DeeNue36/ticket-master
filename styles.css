@@ -326,20 +326,19 @@ input#avatar {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    width: 600px;
+    max-width: 600px;
     height: 280px;
-    /* margin: 0 auto; */
     -webkit-backdrop-filter: blur(8px);
     -moz-backdrop-filter: blur(8px);
     -o-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     display: flex;
-    place-self: center;
+    place-self: center; /* OR justify-self: center; */
 }
 
 /** Ticket Main Area Styling */
 .main-area {
-    width: 486px;
+    min-width: 486px;
     padding: 24px 24px;
     height: inherit;
     display: flex;
@@ -421,7 +420,7 @@ input#avatar {
 
 /** Ticket Minor Area Styling */
 .minor-area {
-    width: 114px;
+    min-width: 114px;
     height: inherit;
 }
 
