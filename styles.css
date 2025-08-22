@@ -577,15 +577,18 @@ input#avatar {
     body {
         min-height: 1032px;
     }
-    .container {
+    .container, .ticket-container {
         max-width: 320px;
     }
 }
 
 /** iPhone SE */
 @media screen and (max-width: 320px) {
-    .container {
+    .container, .ticket-container {
         max-width: 280px;
+    }
+    .ticket {
+        transform: scale(0.5); 
     }
 }
 
