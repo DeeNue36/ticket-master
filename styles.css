@@ -538,6 +538,7 @@ input#avatar {
     .intro-text, .congrats-text {
         font-size: 2.2em;
         word-spacing: 0;
+        margin: 32px 16px 24px;
     }
     .ticket-container {
         max-width: 480px;
@@ -608,6 +609,5 @@ input#avatar {
     }
 }
 
-/* Todo: Adjust ticket container max-width for browsers from width 600px and also add the transform property for the ticket sizing */
 /* Todo: Add the transform property for smaller screen sizes */
 /* Todo: Also consider adding more margin and padding for screens from width 430px which in turn will cause an increase in the body::after height */
