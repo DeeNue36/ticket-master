@@ -608,6 +608,3 @@ input#avatar {
         transform: scale(0.5); 
     }
 }
-
-/* Todo: Add the transform property for smaller screen sizes */
-/* Todo: Also consider adding more margin and padding for screens from width 430px which in turn will cause an increase in the body::after height */
