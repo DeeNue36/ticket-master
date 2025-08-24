@@ -513,13 +513,14 @@ input#avatar {
     body::after {
         background-size: cover, 20% 20%, 20% 8%, 20% 20%, 64% auto;
         background-position: top center, top -64px left, top 16px right, top 480px right 4%, bottom left;
-        /* padding-bottom: 32px; */
+        padding-bottom: 32px;
     }
     .container {
         max-width: 640px;
     }
     .intro-text, .congrats-text {
         font-size: 3.2em;
+        word-spacing: 6px;
     }
 }
 
@@ -529,9 +530,25 @@ input#avatar {
     }
     .intro-text, .congrats-text {
         font-size: 2.8em;
+        word-spacing: 3px;
     }
 }
 
+@media screen and (max-width: 600px) {
+    .intro-text, .congrats-text {
+        font-size: 2.2em;
+        word-spacing: 0;
+    }
+    .ticket-container {
+        max-width: 480px;
+    }
+    .ticket {
+        transform: scale(0.8);
+    }
+}
+
+
+/** Mobile Screens */
 @media screen and (max-width: 480px) {
     body {
         background: var(--background-image-mobile);
@@ -558,7 +575,6 @@ input#avatar {
     }
     .ticket {
         place-self: center; /* OR justify-self: center; */
-        margin: 0;
         transform: scale(0.68); 
     }
 }
@@ -592,5 +608,6 @@ input#avatar {
     }
 }
 
+/* Todo: Adjust ticket container max-width for browsers from width 600px and also add the transform property for the ticket sizing */
 /* Todo: Add the transform property for smaller screen sizes */
 /* Todo: Also consider adding more margin and padding for screens from width 430px which in turn will cause an increase in the body::after height */
