@@ -518,12 +518,3 @@ const githubErrorAnimation = () => {
         githubInput.classList.remove('error-vibrate');
     }, 2000);
 }
-
-// TODO: Enable removing the file selector when the user clicks outside of it
-
-// remove the file selector when the user clicks outside of it
-document.addEventListener('click', (event) => {
-    if (!fileUploadContainer.contains(event.target)) {
-        fileUploadContainer.classList.remove('show');
-    }
-});
