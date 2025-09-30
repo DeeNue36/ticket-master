@@ -17,7 +17,7 @@
         <main class="ticket-application">
             <!-- * Ticket Application Header -->
             <header class="company-intro">
-                <img src="images/logo-full.svg" class="company-logo" alt="Coding Conf logo" />
+                <img src="images/logo-full.svg" class="company-logo" alt="Coding Conf logo">
                 <h1 class="intro-text">
                     Your Journey to Coding Conf 2025 Starts Here!
                 </h1>
@@ -50,7 +50,7 @@
                         </p>
                         <p class="avatar-error-message"></p>
                     </div>
-            
+
                     <!-- * User Full Name -->
                     <label for="fullname">Full Name</label>
                     <input type="text" id="fullname" name="fullname" autocomplete="on" required>
@@ -65,22 +65,19 @@
                     <label for="github-uname">Github Username</label>
                     <input type="text" id="github-uname" name="github-uname" placeholder="@yourusername" autocomplete="on" required>
                     <p class="github-error-message"></p>
+
+                    <!-- * Submit Form & Generate Ticket -->
+                    <button type="submit" class="generate-ticket" id="generate-ticket">
+                        <span>Generate My Ticket</span>
+                    </button>
                 </form>
-
-                <!-- * Submit Form & Generate Ticket -->
-                <button type="submit" class="generate-ticket" id="generate-ticket">
-                    <span>Generate My Ticket</span>
-                </button>
-
             </div>
         </main>
-
-        
     </div>
-    
+
     <!-- * Ticket Section -->
     <div class="ticket-container hide"></div>
-    
+
     <script src="ticket.js"></script>
 </body>
 </html>
