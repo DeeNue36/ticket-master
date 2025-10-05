@@ -141,19 +141,6 @@ label {
     cursor: pointer;
 }
 
-.file-upload:hover, .fullname:hover, .email:hover, .github-uname:hover {  /** Input fields hover state  */
-    background-color:  var(--input-bg-color-hover);
-    -webkit-backdrop-filter: blur(2px);
-    -moz-backdrop-filter: blur(2px);
-    -o-backdrop-filter: blur(2px);
-    backdrop-filter: blur(2px);
-    cursor: pointer;
-}
-
-.file-upload:focus, .fullname:focus, .email:focus, .github-uname:focus, .generate-ticket:focus {  /** Input fields focus state */
-    outline: 1px solid var(--placeholder-color);
-    outline-offset: 0.25rem;
-}
 
 .upload {
     border: 1px solid var(--upload-bg-color);
@@ -255,6 +242,21 @@ label {
     color: var(--text-color);
     font-family: inherit;
     font-size: 1rem;
+}
+
+/** File Upload Container and Input Fields hover states */
+.file-upload:hover, .fullname:hover, .email:hover, .github-uname:hover {
+    background-color:  var(--input-bg-color-hover);
+    -webkit-backdrop-filter: blur(2px);
+    -moz-backdrop-filter: blur(2px);
+    -o-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    cursor: pointer;
+}
+
+.file-upload:focus, .fullname:focus, .email:focus, .github-uname:focus, .generate-ticket:focus {
+    outline: 1px solid var(--placeholder-color);
+    outline-offset: 0.25rem;
 }
 
 
