@@ -7,15 +7,18 @@
 }
 
 :root {
-    --text-color: hsl(0, 0%, 100%);
-    --placeholder-color: hsl(252, 6%, 83%);
-    --form-background-color: hsl(245, 15%, 58%);
-    --background-color-light: hsl(245, 19%, 35%);
-    --background-color-dark: hsl(248, 70%, 10%);
-    --button-background-color: hsl(7, 88%, 67%);
-    --button-background-color-hover: hsl(7, 71%, 60%);
-    --button-text-color: hsl(0, 0%, 0%);
-    --ticket-name-gradient-color: hsl(7, 86%, 67%), hsl(0, 0%, 100%);
+    --text-color: #ffffff;
+    --placeholder-color: #d2d1d6;
+    --form-background-color: #8784a4;
+    --background-color-light: #4b486a;
+    --background-color-dark: #0c082b;
+    --button-background-color: #f57261;
+    --button-background-color-hover: #e16151;
+    --button-text-color: #000000;
+    --ticket-name-gradient-color: #f37362, #ffffff;
+    --file-upload-bg-color: #4b486a3d;
+    --upload-bg-color: #8784a480;
+    --input-bg-color-hover: #4b486a80;
     --form-label-size: 20px;
     --font-weight-normal: 400;
     --font-weight-medium: 500;
@@ -39,7 +42,7 @@ body::after {
     content: '';
     background-image: url('images/pattern-lines.svg'), url('images/pattern-circle.svg'), url('images/pattern-squiggly-line-top.svg'), url('images/pattern-circle.svg'), url('images/pattern-squiggly-line-bottom-desktop.svg');
     background-size: cover, 20% 20%, 24% 24%, 20% 20%, 64% auto;
-    background-position: top center, top -64px left, top 32px right, top 480px right 26%, bottom left;
+    background-position: top center, top -4rem left, top 2rem right, top 30rem right 26%, bottom left;
     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
     height: 100vh;
     width: 100vw;
@@ -50,7 +53,7 @@ body::after {
 }
 
 .container {
-    max-width: 864px;
+    max-width: 54rem;
 }
 
 
@@ -67,20 +70,20 @@ body::after {
 }
 
 .company-logo {
-    margin-top: 32px;
+    margin-top: 2rem;
 }
 
 .intro-text, .congrats-text {
     color: var(--text-color);
     font-size: 3.6em;
-    word-spacing: 12px;
-    margin: 32px 0 24px;
+    word-spacing: 0.75rem;
+    margin: 2rem 0 1.5rem;
 }
 
 .intro-subtext {
     color: var(--placeholder-color);
     font-size: 1.4em;
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
 }
 
 
@@ -89,18 +92,18 @@ label {
     color: var(--text-color);
     width: 100%;
     font-size: var(--form-label-size);
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
 }
 
 ::placeholder {
     color: var(--placeholder-color);
     opacity:  0.72;
     font-family: inherit;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 .ticket-form-container {
-    max-width: 480px;
+    max-width: 30rem;
     margin: 0 auto;
 }
 
@@ -109,8 +112,8 @@ label {
     flex-direction: column;
 }
 
-.file-upload:hover, #fullname:hover, #email:hover, #github-uname:hover {  /** Input fields hover state  */
-    background-color:  hsl(245, 19%, 35%, 0.5);
+.file-upload:hover, .fullname:hover, .email:hover, .github-uname:hover {  /** Input fields hover state  */
+    background-color:  var(--input-bg-color-hover);
     -webkit-backdrop-filter: blur(2px);
     -moz-backdrop-filter: blur(2px);
     -o-backdrop-filter: blur(2px);
@@ -118,9 +121,9 @@ label {
     cursor: pointer;
 }
 
-.file-upload:focus, #fullname:focus, #email:focus, #github-uname:focus, .generate-ticket:focus {  /** Input fields focus state */
+.file-upload:focus, .fullname:focus, .email:focus, .github-uname:focus, .generate-ticket:focus {  /** Input fields focus state */
     outline: 1px solid var(--placeholder-color);
-    outline-offset: 4px;
+    outline-offset: 0.25rem;
 }
 
 
@@ -136,36 +139,36 @@ input#avatar {
 
 .file-upload {
     border: 1px dashed var(--form-background-color);
-    background-color: hsl(245, 19%, 35%, 0.24);
+    background-color: var(--file-upload-bg-color);
     -webkit-backdrop-filter: blur(2px);
     -moz-backdrop-filter: blur(2px);
     -o-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
-    border-radius: 10px;
+    border-radius: 0.625rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 132px;
+    height: 8.25rem;
     cursor: pointer;
     color: var(--placeholder-color);
 }
 
 .upload {
-    border: 1px solid hsl(245, 15%, 58%, 0.5);
-    border-radius: 15px;
+    border: 1px solid var(--upload-bg-color);
+    border-radius: 0.938rem;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    width: 64px;
-    height: 64px;
+    width: 4rem;
+    height: 4rem;
     max-width: 100%;
     max-height: 100%;
-    background-color: hsl(245, 19%, 35%, 0.5);
+    background-color: var(--input-bg-color-hover);
 }
 
 .upload::before {
@@ -181,7 +184,7 @@ input#avatar {
     height: 100%;
     object-fit: contain;
     object-position: center;
-    border-radius: 15px;
+    border-radius: 0.938rem;
     z-index: 1;
 }
 
@@ -194,38 +197,38 @@ input#avatar {
 
 /** Upload Instructions Main Text */
 .upload-instructions {
-    margin-top: 20px;
-    letter-spacing: 1px;
+    margin-top: 1.25rem;
+    letter-spacing: 0.063rem;
 }
 
 /** Uploaded Image Control Buttons */
 .upload-controls {
     display: none;
-    gap: 20px;
+    gap: 1.25rem;
 }
 
 .remove-button, .change-button {
     font-family: inherit;
     outline: none;
     border: none;
-    background-color: hsl(245, 19%, 35%, 0.5);
+    background-color: var(--input-bg-color-hover);
     color: var(--text-color);
-    border-radius: 5px;
-    padding: 6px 12px;
-    margin-top: 12px;
+    border-radius: 0.313rem;
+    padding: 6px 0.75rem;
+    margin-top: 0.75rem;
     cursor: pointer;
 }
 
 .remove-button {
-    text-underline-offset: 2px;
+    text-underline-offset: 0.125rem;
     text-decoration: underline;
 }
 
 /** Upload Instructions Sub Text */
 .upload-instructions-subtext {
     color: var(--placeholder-color);
-    font-size: 12px;
-    margin: 16px 0 24px;
+    font-size: 0.75rem;
+    margin: 1rem 0 1.5rem;
 }
 
 .info-circle {
@@ -238,26 +241,26 @@ input#avatar {
 
 
 /** Input Fields Styling — Full Name, Email, Github Username */
-#fullname, #email, #github-uname {
+.fullname, .email, .github-uname {
     border: 1px solid var(--form-background-color);
-    background-color: hsl(245, 19%, 35%, 0.24);
+    background-color: var(--file-upload-bg-color);
     -webkit-backdrop-filter: blur(2px);
     -moz-backdrop-filter: blur(2px);
     -o-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
     border-radius: 10px;
-    padding: 16px;
-    margin-bottom: 16px;
+    padding: 1rem;
+    margin-bottom: 1rem;
     outline: none;
     color: var(--text-color);
     font-family: inherit;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 
 /** Button styling */
 .generate-ticket {
-    margin-top: 12px;
+    margin-top: 0.75rem;
     border: none;
     border-bottom: 3.2px inset var(--button-background-color);
     outline : none;
@@ -268,9 +271,9 @@ input#avatar {
     font-size: var(--form-label-size);
     font-weight: var(--font-weight-extrabold);
     text-align: center;
-    letter-spacing: 1px;
-    padding: 14px 0;
-    border-radius: 10px;
+    letter-spacing: 0.063rem;
+    padding: 0.875 0;
+    border-radius: 0.625rem;
     cursor: pointer;
     transition: background-color 0.3s ease-in;
 }
@@ -290,7 +293,7 @@ input#avatar {
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 32px 0 72px;
+    margin: 2rem 0 4.5rem;
 }
 
 .ticket-owner-name {
@@ -307,16 +310,16 @@ input#avatar {
 
 .confirmation-text {
     color: var(--placeholder-color);
-    font-size: 16px;
+    font-size: 1rem;
     text-align: center;
-    max-width: 400px;
+    max-width: 25rem;
     margin: 0 auto;
-    line-height: 20px;
+    line-height: 1.25rem;
 }
 
 .ticket-owner-email {
     color: var(--button-background-color);
-    letter-spacing: 1px;
+    letter-spacing: 0.063rem;
 }
 
 /** Ticket Styling */
@@ -325,8 +328,8 @@ input#avatar {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    max-width: 600px;
-    height: 280px;
+    max-width: 37.5rem;
+    height: 17.5rem;
     -webkit-backdrop-filter: blur(8px);
     -moz-backdrop-filter: blur(8px);
     -o-backdrop-filter: blur(8px);
@@ -337,8 +340,8 @@ input#avatar {
 
 /** Ticket Main Area Styling */
 .main-area {
-    min-width: 486px;
-    padding: 24px 24px;
+    min-width: 30.375rem;
+    padding: 1.5rem 1.5rem;
     height: inherit;
     display: flex;
     flex-direction: column;
@@ -348,27 +351,27 @@ input#avatar {
 .ticket-logo-container {
     display: flex;
     align-items: center;
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
 }
 
 .ticket-logo {
-    margin-right: 16px;
+    margin-right: 1rem;
 }
 
 .ticket-company-name {
     color: var(--text-color);
     font-weight: var(--font-weight-medium);
-    font-size: 36px;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
+    font-size: 2.25rem;
+    letter-spacing: 0.063rem;
+    margin-bottom: 0.5rem;
 }
 
 .event-details {
     color: var(--placeholder-color);
-    font-size: 16px;
-    letter-spacing: 1px;
-    margin-top: -72px;
-    margin-left: 56px;
+    font-size: 1rem;
+    letter-spacing: 0.063rem;
+    margin-top: -4.5rem;
+    margin-left: 3.5rem;
 }
 
 .ticket-user-details {
@@ -376,10 +379,10 @@ input#avatar {
 }
 
 .user-avatar-img {
-    width: 80px;
-    height: 80px;
+    width: 5rem;
+    height: 5rem;
     border-radius: 16%;
-    margin-right: 16px;
+    margin-right: 1rem;
 }
 
 .user-ticket-info {
@@ -391,9 +394,9 @@ input#avatar {
 .user-fullname {
     color: var(--text-color);
     font-weight: var(--font-weight-normal);
-    font-size: 28px;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
+    font-size: 1.75rem;
+    letter-spacing: 0.063rem;
+    margin-bottom: 0.75rem;
 }
 
 .user-fullname::first-letter, .ticket-owner-name::first-letter {
@@ -406,20 +409,20 @@ input#avatar {
 }
 
 .github-icon {
-    margin-right: 12px;
-    width: 20px;
-    height: 21px;
+    margin-right: 0.75rem;
+    width: 1.25rem;
+    height: 1.313rem;
 }
 
 .user-github-username {
     color: var(--placeholder-color);
-    font-size: 18px;
+    font-size: 1.125rem;
 }
 
 
 /** Ticket Minor Area Styling */
 .minor-area {
-    min-width: 114px;
+    min-width: 7.125rem;
     height: inherit;
 }
 
@@ -433,9 +436,9 @@ input#avatar {
 .ticket-id-number {
     color: var(--placeholder-color);
     opacity: 0.5;
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: var(--font-weight-medium);
-    letter-spacing: 1px;
+    letter-spacing: 0.063rem;
     transform: rotate(90deg);
 }
 
@@ -443,18 +446,18 @@ input#avatar {
 /** Error Styling */
 .avatar-error-message {
     color: var(--button-background-color-hover);
-    font-size: 12px;
-    margin: 16px 0 16px;
+    font-size: 0.75rem;
+    margin: 1rem 0 1rem;
 }
 
 .name-error-message, .email-error-message, .github-error-message {
     color: var(--button-background-color-hover);
-    font-size: 12px;
-    margin-bottom: 10px;
+    font-size: 0.75rem;
+    margin-bottom: 0.625rem;
 }
 
 .error-info-circle {
-    margin-right: 8px;
+    margin-right: 0.5rem;
     vertical-align: middle;
 }
 
@@ -494,7 +497,7 @@ input#avatar {
 /** iOS Tablets and Nexus 9 Tablet */
 @media screen and (max-width: 1024px) {
     body {
-        margin-bottom: 2px;
+        margin-bottom: 0.125rem;
     }
 }
 
@@ -507,29 +510,29 @@ input#avatar {
     
     body {
         background: var(--background-image-tablet);
-        margin-bottom: 32px;
+        margin-bottom: 2rem;
     }
     body::after {
         background-size: cover, 20% 20%, 20% 8%, 20% 20%, 64% auto;
-        background-position: top center, top -64px left, top 16px right, top 480px right 4%, bottom left;
-        padding-bottom: 32px;
+        background-position: top center, top -4rem left, top 1rem right, top 30rem right 4%, bottom left;
+        padding-bottom: 2rem;
     }
     .container {
-        max-width: 640px;
+        max-width: 40rem;
     }
     .intro-text, .congrats-text {
         font-size: 3.2em;
-        word-spacing: 6px;
+        word-spacing: 0.375rem;
     }
 }
 
 @media screen and (max-width: 624px) {
     .container {
-        max-width: 480px;
+        max-width: 30rem;
     }
     .intro-text, .congrats-text {
         font-size: 2.8em;
-        word-spacing: 3px;
+        word-spacing: 0.188rem;
     }
 }
 
@@ -537,10 +540,10 @@ input#avatar {
     .intro-text, .congrats-text {
         font-size: 2.2em;
         word-spacing: 0;
-        margin: 32px 16px 24px;
+        margin: 2rem 1rem 1.5rem;
     }
     .ticket-container {
-        max-width: 480px;
+        max-width: 30rem;
     }
     .ticket {
         transform: scale(0.8);
@@ -552,26 +555,26 @@ input#avatar {
 @media screen and (max-width: 480px) {
     body {
         background: var(--background-image-mobile);
-        min-height: 1032px;
+        min-height: 64.5rem;
     }
     body::after {
         background-image: url('images/pattern-lines.svg'), url('images/pattern-circle.svg'), url('images/pattern-squiggly-line-top.svg'), url('images/pattern-circle.svg'), var(--pattern-squiggly-line-tablet-mobile);
         background-size: cover, 24% 24%, 24% 8%, 32% 32%, 64% auto;
-        background-position: top center, top -80px left -20px, top 16px right, top 492px right -64px, bottom left;
-        height: 1064px;
+        background-position: top center, top -5rem left -1.25rem, top 1rem right, top 30.75rem right -4rem, bottom left;
+        height: 66.5rem;
     }
     .container {
-        max-width: 360px;
+        max-width: 22.5rem;
     }
     .intro-text, .congrats-text {
         font-size: 2em;
-        word-spacing: 0px;
+        word-spacing: 0;
     }
     .user-ticket-ready .company-logo {
         margin-top: 0;
     }
     .ticket-container {
-        max-width: 400px;
+        max-width: 25rem;
     }
     .ticket {
         place-self: center; /* OR justify-self: center; */
@@ -591,17 +594,17 @@ input#avatar {
 /** iPhone 8 */
 @media screen and (max-width: 375px) {
     body {
-        min-height: 1032px;
+        min-height: 64.5rem;
     }
     .container, .ticket-container {
-        max-width: 320px;
+        max-width: 20rem;
     }
 }
 
 /** iPhone SE */
 @media screen and (max-width: 320px) {
     .container, .ticket-container {
-        max-width: 280px;
+        max-width: 17.5rem;
     }
     .ticket {
         transform: scale(0.5); 
