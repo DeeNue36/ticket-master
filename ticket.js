@@ -5,7 +5,6 @@ const ticketApplicationContainer = document.querySelector('.ticket-application')
 const displayTicket = document.querySelector('.ticket-container');
 
 // * Ticket Application Form and Inputs
-const ticketApplicationForm = document.querySelector('.ticket-form');
 const selectImage = document.querySelector('.upload');
 const avatarInput = document.querySelector('#avatar');
 const nameInput = document.querySelector('#fullname');
@@ -360,7 +359,6 @@ function validateAvatar() {
             //? Create and append the error message
             const errorMessage = createErrorMessage('Please upload a .JPG or .PNG file under 500KB.');
             avatarErrorMessage.appendChild(errorMessage);
-            console.log(fileSizeInMB);
         } 
         else {
             //? Create and append the error message
