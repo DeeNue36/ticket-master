@@ -128,7 +128,7 @@ label {
 
 
 /** File Upload Field  Styling */
-input#avatar {
+.avatar-input {
     display: none;
 }
 
