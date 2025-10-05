@@ -296,7 +296,6 @@ input#avatar {
 .ticket-owner-name {
     background-image: linear-gradient(to right, var(--ticket-name-gradient-color));
     -webkit-background-clip: text;
-    -moz-background-clip: text;
     -o-background-clip: text;
     background-clip: text;
     color: transparent; /* OR text-fill-color: transparent; */
