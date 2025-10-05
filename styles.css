@@ -138,21 +138,21 @@ label {
 }
 
 .file-upload {
-    border: 1px dashed var(--form-background-color);
-    background-color: var(--file-upload-bg-color);
-    -webkit-backdrop-filter: blur(2px);
-    -moz-backdrop-filter: blur(2px);
-    -o-backdrop-filter: blur(2px);
-    backdrop-filter: blur(2px);
-    border-radius: 0.625rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     height: 8.25rem;
-    cursor: pointer;
+    border: 1px dashed var(--form-background-color);
+    border-radius: 0.625rem;
     color: var(--placeholder-color);
+    background-color: var(--file-upload-bg-color);
+    -webkit-backdrop-filter: blur(2px);
+    -moz-backdrop-filter: blur(2px);
+    -o-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    cursor: pointer;
 }
 
 .upload {
