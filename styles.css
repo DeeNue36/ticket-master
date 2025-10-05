@@ -254,12 +254,6 @@ label {
     cursor: pointer;
 }
 
-.file-upload:focus, .fullname:focus, .email:focus, .github-uname:focus, .generate-ticket:focus {
-    outline: 1px solid var(--placeholder-color);
-    outline-offset: 0.25rem;
-}
-
-
 /** Button styling */
 .generate-ticket {
     margin-top: 0.75rem;
@@ -283,6 +277,11 @@ label {
 .generate-ticket:hover {
     background-color: var(--button-background-color-hover);
     border-bottom:  3.2px inset var(--button-background-color);
+}
+
+.file-upload:focus, .fullname:focus, .email:focus, .github-uname:focus, .generate-ticket:focus {
+    outline: 1px solid var(--placeholder-color);
+    outline-offset: 0.25rem;
 }
 
 
