@@ -563,6 +563,7 @@ label {
         background-size: cover, 24% 24%, 24% 8%, 32% 32%, 64% auto;
         background-position: top center, top -5rem left -1.25rem, top 1rem right, top 30.75rem right -4rem, bottom left;
         height: 66.5rem;
+        padding-bottom:  0;
     }
     .container {
         max-width: 22.5rem;
